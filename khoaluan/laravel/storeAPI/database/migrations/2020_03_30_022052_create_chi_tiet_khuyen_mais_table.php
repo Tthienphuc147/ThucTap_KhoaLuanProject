@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateDanhMucHinhsTable extends Migration
+class CreateChiTietKhuyenMaisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateDanhMucHinhsTable extends Migration
      */
     public function up()
     {
-        Schema::create('danh_muc_hinhs', function (Blueprint $table) {
+        Schema::create('chi_tiet_khuyen_mais', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->longText('Hinh')->nullable();
+            $table->double('TiLe');
+            $table->bigInteger('idKhuyenMai')->unsigned();
+            $table->foreign('idKhuyenMai')->references('id')->on('khuyen_mais')->onDelete('cascade');
             $table->bigInteger('idSanPham')->unsigned();
             $table->foreign('idSanPham')->references('id')->on('san_pham_ban_muas')->onDelete('cascade');
             $table->timestamps();
@@ -29,6 +31,6 @@ class CreateDanhMucHinhsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('danh_muc_hinhs');
+        Schema::dropIfExists('chi_tiet_khuyen_mais');
     }
 }

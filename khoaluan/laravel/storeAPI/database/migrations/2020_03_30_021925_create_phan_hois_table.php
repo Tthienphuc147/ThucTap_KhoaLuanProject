@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Carbon\Carbon;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateHoaDonNhapsTable extends Migration
+class CreatePhanHoisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +13,13 @@ class CreateHoaDonNhapsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hoa_don_nhaps', function (Blueprint $table) {
+        Schema::create('phan_hois', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('NoiDung');
+            $table->bigInteger('idParent')->unsigned()->nullable();
+            $table->foreign('idParent')->references('id')->on('phan_hois');
             $table->bigInteger('idUser')->unsigned();
-            $table->datetime('NgayNhap');
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
-            $table->bigInteger('idNCC')->unsigned();
-            $table->foreign('idNCC')->references('id')->on('nha_cung_caps')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateHoaDonNhapsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hoa_don_nhaps');
+        Schema::dropIfExists('phan_hois');
     }
 }

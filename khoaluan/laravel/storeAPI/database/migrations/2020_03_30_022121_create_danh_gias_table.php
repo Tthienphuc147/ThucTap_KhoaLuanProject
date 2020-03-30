@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreatePhanHoisTable extends Migration
+class CreateDanhGiasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreatePhanHoisTable extends Migration
      */
     public function up()
     {
-        Schema::create('phan_hois', function (Blueprint $table) {
+        Schema::create('danh_gias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('NoiDung');
-            $table->bigInteger('idParent')->unsigned()->nullable();
-            $table->foreign('idParent')->references('id')->on('phan_hois');
+            $table->integer('Diem')->default(5);
+            $table->string('NoiDung')->nullable();
+            $table->bigInteger('idSanPham')->unsigned();
+            $table->foreign('idSanPham')->references('id')->on('san_pham_ban_muas')->onDelete('cascade');
             $table->bigInteger('idUser')->unsigned();
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
@@ -31,6 +32,6 @@ class CreatePhanHoisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('phan_hois');
+        Schema::dropIfExists('danh_gias');
     }
 }

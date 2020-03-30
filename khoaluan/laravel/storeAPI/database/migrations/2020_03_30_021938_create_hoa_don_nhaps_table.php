@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateDanhGiasTable extends Migration
+class CreateHoaDonNhapsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateDanhGiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('danh_gias', function (Blueprint $table) {
+        Schema::create('hoa_don_nhaps', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('Diem')->default(5);
-            $table->string('NoiDung')->nullable();
-            $table->bigInteger('idSanPham')->unsigned();
-            $table->foreign('idSanPham')->references('id')->on('san_pham_ban_muas')->onDelete('cascade');
             $table->bigInteger('idUser')->unsigned();
+            $table->datetime('NgayNhap');
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('idNCC')->unsigned();
+            $table->foreign('idNCC')->references('id')->on('nha_cung_caps')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateDanhGiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('danh_gias');
+        Schema::dropIfExists('hoa_don_nhaps');
     }
 }

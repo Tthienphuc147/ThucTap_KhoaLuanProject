@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateQuyensTable extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateQuyensTable extends Migration
      */
     public function up()
     {
-        Schema::create('quyens', function (Blueprint $table) {
+        Schema::create('password_resets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('Ten');
+            $table->string('email')->index();
+            $table->string('token');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateQuyensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quyens');
+        Schema::dropIfExists('password_resets');
     }
 }
