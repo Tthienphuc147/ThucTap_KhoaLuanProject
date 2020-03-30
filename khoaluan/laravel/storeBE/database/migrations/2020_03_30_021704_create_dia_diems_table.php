@@ -14,7 +14,10 @@ class CreateDiaDiemsTable extends Migration
     public function up()
     {
         Schema::create('dia_diems', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('Ten');
+            $table->bigInteger('idParent')->unsigned()->nullable();
+            $table->foreign('idParent')->references('id')->on('dia_diems')->onDelete('cascade');
             $table->timestamps();
         });
     }

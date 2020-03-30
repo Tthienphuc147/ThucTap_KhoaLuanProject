@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDanhMucsTable extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateDanhMucsTable extends Migration
      */
     public function up()
     {
-        Schema::create('danh_mucs', function (Blueprint $table) {
+        Schema::create('password_resets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('Ten');
-            $table->bigInteger('idParent')->unsigned()->nullable();
-            $table->foreign('idParent')->references('id')->on('danh_mucs');
-            $table->string('Hinh')->nullable();
+            $table->string('email')->index();
+            $table->string('token');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateDanhMucsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('danh_mucs');
+        Schema::dropIfExists('password_resets');
     }
 }

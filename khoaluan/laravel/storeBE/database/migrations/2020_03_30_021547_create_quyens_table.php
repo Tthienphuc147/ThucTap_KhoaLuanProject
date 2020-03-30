@@ -14,7 +14,8 @@ class CreateQuyensTable extends Migration
     public function up()
     {
         Schema::create('quyens', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('Ten');
             $table->timestamps();
         });
     }

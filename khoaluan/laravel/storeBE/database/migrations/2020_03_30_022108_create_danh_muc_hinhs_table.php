@@ -14,7 +14,10 @@ class CreateDanhMucHinhsTable extends Migration
     public function up()
     {
         Schema::create('danh_muc_hinhs', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->longText('Hinh')->nullable();
+            $table->bigInteger('idSanPham')->unsigned();
+            $table->foreign('idSanPham')->references('id')->on('san_pham_ban_muas')->onDelete('cascade');
             $table->timestamps();
         });
     }

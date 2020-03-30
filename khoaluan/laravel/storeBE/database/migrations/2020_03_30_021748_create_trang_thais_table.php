@@ -14,7 +14,8 @@ class CreateTrangThaisTable extends Migration
     public function up()
     {
         Schema::create('trang_thais', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('Ten');
             $table->timestamps();
         });
     }

@@ -14,7 +14,12 @@ class CreateHoaDonNhapsTable extends Migration
     public function up()
     {
         Schema::create('hoa_don_nhaps', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->bigInteger('idUser')->unsigned();
+            $table->datetime('NgayNhap');
+            $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('idNCC')->unsigned();
+            $table->foreign('idNCC')->references('id')->on('nha_cung_caps')->onDelete('cascade');
             $table->timestamps();
         });
     }

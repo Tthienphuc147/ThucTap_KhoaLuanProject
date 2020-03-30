@@ -14,7 +14,12 @@ class CreatePhanHoisTable extends Migration
     public function up()
     {
         Schema::create('phan_hois', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('NoiDung');
+            $table->bigInteger('idParent')->unsigned()->nullable();
+            $table->foreign('idParent')->references('id')->on('phan_hois');
+            $table->bigInteger('idUser')->unsigned();
+            $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

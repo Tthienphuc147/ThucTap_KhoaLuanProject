@@ -14,7 +14,17 @@ class CreateHoaDonXuatsTable extends Migration
     public function up()
     {
         Schema::create('hoa_don_xuats', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('NguoiNhan');
+            $table->string('DiaChi');
+            $table->string('DienThoai');
+             $table->bigInteger('idTrangThai')->unsigned()->nullable();
+            $table->foreign('idTrangThai')->references('id')->on('trang_thais')->onDelete('cascade');
+            $table->string('LiDo')->nullable();
+            $table->bigInteger('idUser')->unsigned()->nullable();
+            $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('idDiaDiem')->unsigned();
+            $table->foreign('idDiaDiem')->references('id')->on('dia_diems')->onDelete('cascade');
             $table->timestamps();
         });
     }

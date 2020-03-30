@@ -14,7 +14,12 @@ class CreateChiTietKhuyenMaisTable extends Migration
     public function up()
     {
         Schema::create('chi_tiet_khuyen_mais', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->double('TiLe');
+            $table->bigInteger('idKhuyenMai')->unsigned();
+            $table->foreign('idKhuyenMai')->references('id')->on('khuyen_mais')->onDelete('cascade');
+            $table->bigInteger('idSanPham')->unsigned();
+            $table->foreign('idSanPham')->references('id')->on('san_pham_ban_muas')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -14,7 +14,8 @@ class CreateNhaSanXuatsTable extends Migration
     public function up()
     {
         Schema::create('nha_san_xuats', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('Ten');
             $table->timestamps();
         });
     }

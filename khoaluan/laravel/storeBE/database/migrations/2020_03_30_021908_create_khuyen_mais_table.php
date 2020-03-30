@@ -14,7 +14,11 @@ class CreateKhuyenMaisTable extends Migration
     public function up()
     {
         Schema::create('khuyen_mais', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('Ten');
+            $table->string('MoTa');
+            $table->datetime('NgayBD');
+            $table->datetime('NgayKT');
             $table->timestamps();
         });
     }
