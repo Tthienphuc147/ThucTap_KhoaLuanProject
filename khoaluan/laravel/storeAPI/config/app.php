@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         BC\Laravel\DropboxDriver\ServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Superbalist\LaravelGoogleCloudStorage\GoogleCloudStorageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -178,7 +179,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
 
-       
+
 
     ],
 
