@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cdio4-banhang",
+  "private_key_id": "337502a473e335423ccf32d04bb96a00b8746105",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCbYBvf/saohGTn\nGhd1WRJilkWI9yefmEel1sJmUcgRsxxSBgJvo7pY+QftBUkPtJpnq5dSFm+o97tK\n2wK0siERtsRbu0bL61waTCCWscNYXVDOhHfrPO76PHUimmOnsqPE/N3gB7mtUWuQ\nbYPvHOCKkafgGipaO8vyfICqmul+em1MY223QOCH8fXRDuuRmD3cMC6LYTOHXHfW\nwZoNvdTnVwK0Ypt54HzaBNncplne9Tqh932xb+r3DpAYwiokLp//dg6LsmKMnMGy\nK4zrffE5UO+w/eud5skgzXM5OhcgabtmAaxY+ljBxz0IWDdPu8bgav4FYttnG1VD\nlO3mWqRLAgMBAAECggEABVzD9C9GVZg6z/EKFeOM62Mf+OdSx5gerOi5t9n4YN1W\nIQySYUj8zEeipY7/o6+ffpbLolUiOxTQXXfWjZGc65AWZyC9A5pWs5T6BklnTQbs\nxtvdNFIGNhOyao8lLlX6Kfkc1+JcXvtxjhVW2YCdIpspTeYz8lOgU85GizIify9r\ntl6B0lt2QmY0dbr37xpar/GLTUpuHilPGo0rg8bh7karfkOvXknJ0nQcflkwHoee\nMzVoqFgIrTHvMmvghYU4WpyvKzG65HMv9y0di4zvIOGJImerhN9cgQ5Gvoshz7Lp\n06cU7aGT7R9KCgIAMUAOPpKvPNK81OIi9m0MAHdKfQKBgQDQU4N+qyAuNecBcRmq\nkuKHEyzoRkh8HzOfw1CgOTXSra3OH4ZJ/06y0aUtTHyQC9iXW079QFEV4e2ncinG\nTnr/QVfEwu0MwiIuhTtVxi2YZnrHs5Wlcf98E5awG1TS2z9esE0cAg1Bl3dgn9Kf\nh+QXnczDL8uKAyZCFqSIB2d8ZQKBgQC+7ozfuftQc8Gg1ag27rftCphAYl2eAYLj\ncp2ecPriYlaz3Nfocsx7D34uyMC4jvyjQgY2j8pDiqfyoIztYctVwmVkQ4wv3484\nrsS1m8L/3TsTVz1i8+kbZIpLbYO9F8D8f0ZfGZSc7KQM7hKdUSlT2czdFKL1TYNY\nCj9eqdpa7wKBgQCctaXd3DaJ7GxITl7jTDjxKQCH/Y67J/F6hb8Zt8+AGrv6qQYo\nldAKfd/F8ppk9TRJrxr9MKuOTXSrmBpKnXCyoOG4FnWhOkviOMDIphpYYQaNQM8a\nNGXeXRHmibjGIL1Lqk1m+zgjlh/r5G3ZKazwAvkr/sEaoYHfBw9fcEptbQKBgQCx\nZX0YJXmd/19JKxpWp6fWIsDhGUO4GdldsFFIM9q2Wf4KsUcdnwPj1ro7h6SgFaIf\noamaKjEYXgy7PnaR3AoLTUndRXFLzaAJX0A/KFCeYBOSXb0YYl0UaW6gtEjxeM+D\nClH87AyLXMbziINdDVqjoLpaMuFRn0pIk4TbVF8fmwKBgAroC2nmMVT8lHzkobY0\nqeEHBesrXoHeCKgvqP4Cznv0/yO/xvHeBJxXAKWkbWg6iOxGCYnawaIYsSl3iaKx\nuAwU6N+Xe3oWq1T8VRhrEC+PH5TRj6+f6lIcXgOkf4WxUbzJ2WQAVZRxfEZfqRZo\n9AB7KDKse8BL3/tcNFwAcfbl\n-----END PRIVATE KEY-----\n",
+  "client_email": "cdio-laravel@cdio4-banhang.iam.gserviceaccount.com",
+  "client_id": "114008443593951575271",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cdio-laravel%40cdio4-banhang.iam.gserviceaccount.com"
+}
