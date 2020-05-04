@@ -21,9 +21,9 @@ class BaoCaoController extends Controller
         FROM hoa_don_xuats
         LEFT JOIN chi_tiet_hoa_don_xuats
         ON chi_tiet_hoa_don_xuats."idHDX" = hoa_don_xuats."id"
-        LEFT JOIN chi_tiet_hoa_don_nhaps  
+        LEFT JOIN chi_tiet_hoa_don_nhaps
         ON chi_tiet_hoa_don_nhaps."id" = chi_tiet_hoa_don_xuats."MaDotNhap"
-        WHERE EXTRACT(MONTH FROM hoa_don_xuats."updated_at") = '.$date->format("m").' 
+        WHERE EXTRACT(MONTH FROM hoa_don_xuats."updated_at") = '.$date->format("m").'
         AND EXTRACT(YEAR FROM hoa_don_xuats."updated_at") = '.$date->format("Y").'
         AND hoa_don_xuats."idTrangThai" = 4
         '
@@ -41,19 +41,19 @@ class BaoCaoController extends Controller
     }
     public function baocao_donhang(Request $request){
 
-        $ngaybd = (new DateTime($request->NgayBD))->format('d-m-Y');
-        $ngaykt = (new DateTime($request->NgayKT))->format('d-m-Y');
+        $ngaybd = (new DateTime($request->NgayBD))->format('m-d-Y');
+        $ngaykt = (new DateTime($request->NgayKT))->format('m-d-Y');
         $query = "
         SELECT  hoa_don_xuats.*, users.\"Ten\" as \"UserName\",  trang_thais.\"Ten\" as \"StatusName\", SUM(chi_tiet_hoa_don_xuats.\"DonGia\"*chi_tiet_hoa_don_xuats.\"SoLuong\") as total
         FROM hoa_don_xuats
         LEFT JOIN chi_tiet_hoa_don_xuats
         ON chi_tiet_hoa_don_xuats.\"idHDX\" = hoa_don_xuats.\"id\"
-        LEFT JOIN users  
+        LEFT JOIN users
         ON users.\"id\" = hoa_don_xuats.\"idUser\"
-        LEFT JOIN trang_thais  
+        LEFT JOIN trang_thais
         ON trang_thais.\"id\" = hoa_don_xuats.\"idTrangThai\"
         GROUP BY hoa_don_xuats.\"id\", trang_thais.\"id\", users.\"id\"
-        HAVING 
+        HAVING
         hoa_don_xuats.\"updated_at\" between '".$ngaybd."'::date AND '".$ngaykt."'::date
         AND hoa_don_xuats.\"idTrangThai\" = 4
         " ;

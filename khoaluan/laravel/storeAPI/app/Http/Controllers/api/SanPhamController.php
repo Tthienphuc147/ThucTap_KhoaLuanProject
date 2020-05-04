@@ -17,7 +17,7 @@ class SanPhamController extends Controller
     {
         try {
             $query = '
-            SELECT 
+            SELECT
             san_pham_ban_muas.*
             ,   danh_mucs."Ten" AS "TenDanhMuc"
             ,   nha_san_xuats."Ten" AS "TenNSX"
@@ -27,12 +27,12 @@ class SanPhamController extends Controller
             ,   temp_Count."TotalExport"
             FROM san_pham_ban_muas
             LEFT JOIN(
-            SELECT 
+            SELECT
             chi_tiet_hoa_don_nhaps."idSanPham"
             ,   chi_tiet_hoa_don_nhaps."GiaBan"
             FROM   chi_tiet_hoa_don_nhaps
             LEFT JOIN (
-            SELECT 
+            SELECT
             chi_tiet_hoa_don_xuats."SoLuong"
             ,   chi_tiet_hoa_don_xuats."MaDotNhap"
             FROM chi_tiet_hoa_don_xuats
@@ -43,39 +43,39 @@ class SanPhamController extends Controller
             ON temp_CTHDX."MaDotNhap" = chi_tiet_hoa_don_nhaps."id"
             GROUP BY  chi_tiet_hoa_don_nhaps."id", chi_tiet_hoa_don_nhaps."idSanPham"
             HAVING (
-            chi_tiet_hoa_don_nhaps."SoLuong" > SUM(temp_CTHDX."SoLuong") 
-            OR      
+            chi_tiet_hoa_don_nhaps."SoLuong" > SUM(temp_CTHDX."SoLuong")
+            OR
             SUM(temp_CTHDX."SoLuong") IS NULL
-            ) 
-            ) temp_Price 
+            )
+            ) temp_Price
             ON temp_Price."idSanPham" = san_pham_ban_muas."id"
             LEFT JOIN (
-            SELECT 
+            SELECT
             MAX(chi_tiet_khuyen_mais."TiLe") as "rate"
             ,   chi_tiet_khuyen_mais."idSanPham"
             FROM khuyen_mais
             LEFT JOIN chi_tiet_khuyen_mais
             ON chi_tiet_khuyen_mais."idKhuyenMai" = khuyen_mais."id"
-            WHERE 
-            khuyen_mais."NgayBD" <= current_date 
+            WHERE
+            khuyen_mais."NgayBD" <= current_date
             AND khuyen_mais."NgayKT" >= current_date
             GROUP BY chi_tiet_khuyen_mais."idSanPham"
             ) temp_Rate
             ON temp_Rate."idSanPham" = san_pham_ban_muas."id"
             LEFT JOIN (
-            SELECT 
+            SELECT
             san_pham_ban_muas."id"
             ,   (SUM(COALESCE(temp_CTHDN."SoLuongNhap",0)) - SUM(COALESCE(temp_CTHDN."SoLuongXuat",0))) as "SoLuongTon"
             ,   SUM(COALESCE(temp_CTHDN."SoLuongXuat",0)) as "TotalExport"
             FROM san_pham_ban_muas
             LEFT JOIN (
-            SELECT 
+            SELECT
             chi_tiet_hoa_don_nhaps."idSanPham"
             ,   chi_tiet_hoa_don_nhaps."SoLuong" as "SoLuongNhap"
             ,   SUM(tempExport."SoLuong") as "SoLuongXuat"
             FROM chi_tiet_hoa_don_nhaps
             LEFT JOIN (
-            SELECT 
+            SELECT
             chi_tiet_hoa_don_xuats."MaDotNhap"
             ,   chi_tiet_hoa_don_xuats."SoLuong"
             FROM chi_tiet_hoa_don_xuats
@@ -83,19 +83,19 @@ class SanPhamController extends Controller
             ON hoa_don_xuats."id" = chi_tiet_hoa_don_xuats."idHDX"
             AND hoa_don_xuats."idTrangThai" <> 5
             ) tempExport
-            ON tempExport."MaDotNhap" = chi_tiet_hoa_don_nhaps."id"  
+            ON tempExport."MaDotNhap" = chi_tiet_hoa_don_nhaps."id"
             GROUP BY chi_tiet_hoa_don_nhaps."id", chi_tiet_hoa_don_nhaps."idSanPham",chi_tiet_hoa_don_nhaps."SoLuong"
             ) temp_CTHDN
             ON temp_CTHDN."idSanPham" = san_pham_ban_muas."id"
             GROUP BY san_pham_ban_muas."id"
             ) temp_Count
-            ON 
+            ON
             temp_Count."id" = san_pham_ban_muas."id"
             LEFT JOIN danh_mucs
-            ON danh_mucs."id" = san_pham_ban_muas."idDanhMuc" 
+            ON danh_mucs."id" = san_pham_ban_muas."idDanhMuc"
             LEFT JOIN nha_san_xuats
             ON nha_san_xuats."id" = san_pham_ban_muas."idNSX"
-            GROUP BY 
+            GROUP BY
             san_pham_ban_muas."id",temp_Rate."rate"
             ,   temp_Count."SoLuongTon"
             ,   temp_Count."TotalExport"
@@ -130,7 +130,7 @@ class SanPhamController extends Controller
             {
                 $file=$request->file('Hinh');
                 $duoi=$file->getClientOriginalExtension();
-                if($duoi != 'jpg' && $duoi !='png' && $duoi != 'jpeg')
+                if($duoi != 'jpg' && $duoi !='png' && $duoi != 'jpeg' && $duoi != 'webp')
                 {
                     return  response()->json(['content'=>'File khong dung dinh dang',"error"=>true],200);
                 }
@@ -140,7 +140,7 @@ class SanPhamController extends Controller
             }
             $sanpham=SanPhamBanMua::create($request->only('idDanhMuc','idNSX','TenSanPham','MoTa','ThongTin')+['Hinh'=>$name]);
             $query = '
-            SELECT 
+            SELECT
             san_pham_ban_muas.*
             ,   danh_mucs."Ten" AS "TenDanhMuc"
             ,   nha_san_xuats."Ten" AS "TenNSX"
@@ -150,12 +150,12 @@ class SanPhamController extends Controller
             ,   temp_Count."TotalExport"
             FROM san_pham_ban_muas
             LEFT JOIN(
-            SELECT 
+            SELECT
             chi_tiet_hoa_don_nhaps."idSanPham"
             ,   chi_tiet_hoa_don_nhaps."GiaBan"
             FROM   chi_tiet_hoa_don_nhaps
             LEFT JOIN (
-            SELECT 
+            SELECT
             chi_tiet_hoa_don_xuats."SoLuong"
             ,   chi_tiet_hoa_don_xuats."MaDotNhap"
             FROM chi_tiet_hoa_don_xuats
@@ -166,39 +166,39 @@ class SanPhamController extends Controller
             ON temp_CTHDX."MaDotNhap" = chi_tiet_hoa_don_nhaps."id"
             GROUP BY  chi_tiet_hoa_don_nhaps."id", chi_tiet_hoa_don_nhaps."idSanPham"
             HAVING (
-            chi_tiet_hoa_don_nhaps."SoLuong" > SUM(temp_CTHDX."SoLuong") 
-            OR      
+            chi_tiet_hoa_don_nhaps."SoLuong" > SUM(temp_CTHDX."SoLuong")
+            OR
             SUM(temp_CTHDX."SoLuong") IS NULL
-            ) 
-            ) temp_Price 
+            )
+            ) temp_Price
             ON temp_Price."idSanPham" = san_pham_ban_muas."id"
             LEFT JOIN (
-            SELECT 
+            SELECT
             MAX(chi_tiet_khuyen_mais."TiLe") as "rate"
             ,   chi_tiet_khuyen_mais."idSanPham"
             FROM khuyen_mais
             LEFT JOIN chi_tiet_khuyen_mais
             ON chi_tiet_khuyen_mais."idKhuyenMai" = khuyen_mais."id"
-            WHERE 
-            khuyen_mais."NgayBD" <= current_date 
+            WHERE
+            khuyen_mais."NgayBD" <= current_date
             AND khuyen_mais."NgayKT" >= current_date
             GROUP BY chi_tiet_khuyen_mais."idSanPham"
             ) temp_Rate
             ON temp_Rate."idSanPham" = san_pham_ban_muas."id"
             LEFT JOIN (
-            SELECT 
+            SELECT
             san_pham_ban_muas."id"
             ,   (SUM(COALESCE(temp_CTHDN."SoLuongNhap",0)) - SUM(COALESCE(temp_CTHDN."SoLuongXuat",0))) as "SoLuongTon"
             ,   SUM(COALESCE(temp_CTHDN."SoLuongXuat",0)) as "TotalExport"
             FROM san_pham_ban_muas
             LEFT JOIN (
-            SELECT 
+            SELECT
             chi_tiet_hoa_don_nhaps."idSanPham"
             ,   chi_tiet_hoa_don_nhaps."SoLuong" as "SoLuongNhap"
             ,   SUM(tempExport."SoLuong") as "SoLuongXuat"
             FROM chi_tiet_hoa_don_nhaps
             LEFT JOIN (
-            SELECT 
+            SELECT
             chi_tiet_hoa_don_xuats."MaDotNhap"
             ,   chi_tiet_hoa_don_xuats."SoLuong"
             FROM chi_tiet_hoa_don_xuats
@@ -206,19 +206,19 @@ class SanPhamController extends Controller
             ON hoa_don_xuats."id" = chi_tiet_hoa_don_xuats."idHDX"
             AND hoa_don_xuats."idTrangThai" <> 5
             ) tempExport
-            ON tempExport."MaDotNhap" = chi_tiet_hoa_don_nhaps."id"  
+            ON tempExport."MaDotNhap" = chi_tiet_hoa_don_nhaps."id"
             GROUP BY chi_tiet_hoa_don_nhaps."id", chi_tiet_hoa_don_nhaps."idSanPham",chi_tiet_hoa_don_nhaps."SoLuong"
             ) temp_CTHDN
             ON temp_CTHDN."idSanPham" = san_pham_ban_muas."id"
             GROUP BY san_pham_ban_muas."id"
             ) temp_Count
-            ON 
+            ON
             temp_Count."id" = san_pham_ban_muas."id"
             LEFT JOIN danh_mucs
-            ON danh_mucs."id" = san_pham_ban_muas."idDanhMuc" 
+            ON danh_mucs."id" = san_pham_ban_muas."idDanhMuc"
             LEFT JOIN nha_san_xuats
             ON nha_san_xuats."id" = san_pham_ban_muas."idNSX"
-            GROUP BY 
+            GROUP BY
             san_pham_ban_muas."id",temp_Rate."rate"
             ,   temp_Count."SoLuongTon"
             ,   temp_Count."TotalExport"
@@ -262,7 +262,7 @@ class SanPhamController extends Controller
                 $disk = Storage::disk('gcs');
                 $path=$disk->put('sanpham', $file);
                 $disk->delete('sanpham/'.$oldname);
-                $name=Str::after($path, 'sanpham/'); 
+                $name=Str::after($path, 'sanpham/');
                 if($path){
                     $sanpham->update($request->only('idDanhMuc','idNSX','TenSanPham','MoTa','ThongTin')+['Hinh'=>$name]);
                 }
@@ -271,7 +271,7 @@ class SanPhamController extends Controller
                 $sanpham->update($request->all());
             }
             $query = '
-            SELECT 
+            SELECT
             san_pham_ban_muas.*
             ,   danh_mucs."Ten" AS "TenDanhMuc"
             ,   nha_san_xuats."Ten" AS "TenNSX"
@@ -281,12 +281,12 @@ class SanPhamController extends Controller
             ,   temp_Count."TotalExport"
             FROM san_pham_ban_muas
             LEFT JOIN(
-            SELECT 
+            SELECT
             chi_tiet_hoa_don_nhaps."idSanPham"
             ,   chi_tiet_hoa_don_nhaps."GiaBan"
             FROM   chi_tiet_hoa_don_nhaps
             LEFT JOIN (
-            SELECT 
+            SELECT
             chi_tiet_hoa_don_xuats."SoLuong"
             ,   chi_tiet_hoa_don_xuats."MaDotNhap"
             FROM chi_tiet_hoa_don_xuats
@@ -297,39 +297,39 @@ class SanPhamController extends Controller
             ON temp_CTHDX."MaDotNhap" = chi_tiet_hoa_don_nhaps."id"
             GROUP BY  chi_tiet_hoa_don_nhaps."id", chi_tiet_hoa_don_nhaps."idSanPham"
             HAVING (
-            chi_tiet_hoa_don_nhaps."SoLuong" > SUM(temp_CTHDX."SoLuong") 
-            OR      
+            chi_tiet_hoa_don_nhaps."SoLuong" > SUM(temp_CTHDX."SoLuong")
+            OR
             SUM(temp_CTHDX."SoLuong") IS NULL
-            ) 
-            ) temp_Price 
+            )
+            ) temp_Price
             ON temp_Price."idSanPham" = san_pham_ban_muas."id"
             LEFT JOIN (
-            SELECT 
+            SELECT
             MAX(chi_tiet_khuyen_mais."TiLe") as "rate"
             ,   chi_tiet_khuyen_mais."idSanPham"
             FROM khuyen_mais
             LEFT JOIN chi_tiet_khuyen_mais
             ON chi_tiet_khuyen_mais."idKhuyenMai" = khuyen_mais."id"
-            WHERE 
-            khuyen_mais."NgayBD" <= current_date 
+            WHERE
+            khuyen_mais."NgayBD" <= current_date
             AND khuyen_mais."NgayKT" >= current_date
             GROUP BY chi_tiet_khuyen_mais."idSanPham"
             ) temp_Rate
             ON temp_Rate."idSanPham" = san_pham_ban_muas."id"
             LEFT JOIN (
-            SELECT 
+            SELECT
             san_pham_ban_muas."id"
             ,   (SUM(COALESCE(temp_CTHDN."SoLuongNhap",0)) - SUM(COALESCE(temp_CTHDN."SoLuongXuat",0))) as "SoLuongTon"
             ,   SUM(COALESCE(temp_CTHDN."SoLuongXuat",0)) as "TotalExport"
             FROM san_pham_ban_muas
             LEFT JOIN (
-            SELECT 
+            SELECT
             chi_tiet_hoa_don_nhaps."idSanPham"
             ,   chi_tiet_hoa_don_nhaps."SoLuong" as "SoLuongNhap"
             ,   SUM(tempExport."SoLuong") as "SoLuongXuat"
             FROM chi_tiet_hoa_don_nhaps
             LEFT JOIN (
-            SELECT 
+            SELECT
             chi_tiet_hoa_don_xuats."MaDotNhap"
             ,   chi_tiet_hoa_don_xuats."SoLuong"
             FROM chi_tiet_hoa_don_xuats
@@ -337,19 +337,19 @@ class SanPhamController extends Controller
             ON hoa_don_xuats."id" = chi_tiet_hoa_don_xuats."idHDX"
             AND hoa_don_xuats."idTrangThai" <> 5
             ) tempExport
-            ON tempExport."MaDotNhap" = chi_tiet_hoa_don_nhaps."id"  
+            ON tempExport."MaDotNhap" = chi_tiet_hoa_don_nhaps."id"
             GROUP BY chi_tiet_hoa_don_nhaps."id", chi_tiet_hoa_don_nhaps."idSanPham",chi_tiet_hoa_don_nhaps."SoLuong"
             ) temp_CTHDN
             ON temp_CTHDN."idSanPham" = san_pham_ban_muas."id"
             GROUP BY san_pham_ban_muas."id"
             ) temp_Count
-            ON 
+            ON
             temp_Count."id" = san_pham_ban_muas."id"
             LEFT JOIN danh_mucs
-            ON danh_mucs."id" = san_pham_ban_muas."idDanhMuc" 
+            ON danh_mucs."id" = san_pham_ban_muas."idDanhMuc"
             LEFT JOIN nha_san_xuats
             ON nha_san_xuats."id" = san_pham_ban_muas."idNSX"
-            GROUP BY 
+            GROUP BY
             san_pham_ban_muas."id",temp_Rate."rate"
             ,   temp_Count."SoLuongTon"
             ,   temp_Count."TotalExport"
