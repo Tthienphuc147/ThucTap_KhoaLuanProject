@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+    api_url: 'http://127.0.0.1:8000',
+    // api_url: 'https://cdio-laravel.herokuapp.com',
+    api_img: 'https://console.cloud.google.com/storage/browser/store147',
+    api_storage: 'https://storage.cloud.google.com/store147'
 };
 
 /*
