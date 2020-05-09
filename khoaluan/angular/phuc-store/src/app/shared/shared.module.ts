@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComponentsModule } from './components/components.module';
@@ -44,6 +45,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { NgxSpinnerModule } from 'ngx-spinner';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 @NgModule({
   imports: [
@@ -51,7 +53,6 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     NgxMaskModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    ComponentsModule,
     A11yModule,
     CdkStepperModule,
     CdkTableModule,
@@ -93,14 +94,34 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    CommonModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatListModule,
+    MatSliderModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatTableModule,
+    MatRadioModule,
+    MatDialogModule,
+    MatChipsModule,
+    MatInputModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatDividerModule,
+    MatCardModule,
+    FlexLayoutModule,
+    NgxSpinnerModule,
   ],
   exports: [
     CommonModule,
     NgxMaskModule,
     FormsModule,
     ReactiveFormsModule,
-    ComponentsModule,
     A11yModule,
     CdkStepperModule,
     CdkTableModule,
@@ -142,7 +163,28 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    CommonModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatListModule,
+    MatSliderModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatTableModule,
+    MatRadioModule,
+    MatDialogModule,
+    MatChipsModule,
+    MatInputModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatDividerModule,
+    MatCardModule,
+    FlexLayoutModule,
+    NgxSpinnerModule,
   ]
 })
 export class SharedModule {}

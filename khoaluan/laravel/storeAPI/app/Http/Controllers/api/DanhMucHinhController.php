@@ -38,8 +38,8 @@ class DanhMucHinhController extends Controller
             {
                 $file=$request->file('Hinh');
                 $duoi=$file->getClientOriginalExtension();
-                if($duoi != 'jpg' && $duoi !='png' && $duoi != 'jpeg')
-                {   
+                if($duoi != 'jpg' && $duoi !='png' && $duoi != 'jpeg' && $duoi!= 'webp')
+                {
                     $result = array(
                         'status' => 'ER',
                         'message'=> 'File Format is not support',
@@ -99,7 +99,7 @@ class DanhMucHinhController extends Controller
             {
                 $file=$request->file('Hinh');
                 $duoi=$file->getClientOriginalExtension();
-                if($duoi != 'jpg' && $duoi !='png' && $duoi != 'jpeg')
+                if($duoi != 'jpg' && $duoi !='png' && $duoi != 'jpeg' && $duoi!= 'webp')
                 {
                     $result = array(
                         'status' => 'ER',
