@@ -1,0 +1,35 @@
+.cascading-admin-card {
+    margin-top: 20px;
+}
+.cascading-admin-card .admin-up {
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: -20px;
+}
+.cascading-admin-card .admin-up .fa {
+    padding: 1.7rem;
+    font-size: 2rem;
+    color: #fff;
+    text-align: left;
+    margin-right: 1rem;
+    border-radius: 3px;
+    box-shadow: 0 2px 9px 0 rgba(0,0,0,.2), 0 2px 13px 0 rgba(0,0,0,.19);
+}
+.cascading-admin-card .admin-up .data {
+    float: right;
+    margin-top: 2rem;
+    text-align: right;
+}
+.primary-color {
+    background-color: #4285f4!important;
+}
+.data p{
+    color: #999
+}
+.card-body .card-text{
+    color:#747373
+}
+.body-conten{
+    background: #eee;
+    height: 100%;
+}

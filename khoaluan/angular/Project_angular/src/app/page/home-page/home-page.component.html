@@ -1,0 +1,59 @@
+<div class="" style="background: #f8f9fa">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-8 pt-2 d-flex no-gutters">
+                <div class=" d-block row w-100 m-0">
+                    <app-slide></app-slide>
+                </div>
+            </div>
+            <div class="col-lg-4 col-4 d-flex flex-column pt-2">
+                <img src="https://cdn.cellphones.com.vn/media/ltsoft/promotion/L_N_I_SS20_375x175.png" alt="" style="height:8.3rem">
+                <img src="https://cdn.cellphones.com.vn/media/ltsoft/promotion/ip_11_right.jpg" alt="" class="mt-2" style="height:8.3rem">
+            </div>
+        </div>
+    </div>
+    <div class="li-static-banner">
+		<div class="container">
+			<div class="row">
+				<img src="https://cdn.cellphones.com.vn/media/wysiwyg/1200x75---HomePage_2.jpg" alt="" width="100%">
+			</div>
+		</div>
+	</div>
+    <div class="container mt-2">
+        <div class="row">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs d-flex text-center border-bottom-0 text-white" id='myTab'>
+                <li class="nav-item col d-flex  mx-1 p-0 mat-elevation-z1 ">
+                    <a class="nav-link w-100" [ngClass]="{'active': isActive1}" (click)="onClickTab(1)">Sản
+                        phẩm
+                        mới</a>
+                </li>
+                <li class="nav-item col p-0 mat-elevation-z1  mx-1 ">
+                    <a class="nav-link w-100" [ngClass]="{'active': isActive2}" (click)="onClickTab(2)">Sản
+                        phẩm khuyến
+                        mãi</a>
+                </li>
+                <li class="nav-item col d-flex p-0 mat-elevation-z1  mx-1">
+                    <a class="nav-link  w-100" [ngClass]="{'active': isActive3}" (click)="onClickTab(3)">Sản
+                        phẩm mua
+                        nhiều</a>
+                </li>
+            </ul>
+            <div class="py-4 col-12  px-md-3 px-0" style="max-height: 326px">
+                <app-sanphammoi></app-sanphammoi>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="bg-light pb-5  pt-5">
+    <div class="container pt-5">
+        <!-- <app-block-danhmuc *ngFor="let item of myblocks,let i=index" [idblock]="item" [idbaner]="i"></app-block-danhmuc> -->
+        <app-block-danh-muc *ngFor="let item of myblocks,let i=index" [idblock]="item" [idbaner]="i">
+        </app-block-danh-muc>
+
+    </div>
+</div>
+<app-loading></app-loading>

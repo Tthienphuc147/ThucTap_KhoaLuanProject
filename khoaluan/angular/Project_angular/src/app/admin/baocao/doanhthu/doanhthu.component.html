@@ -1,0 +1,30 @@
+<div class="card my-2">
+    <div class="card-header" [ngClass]="{'m_color_primary text-center': thugon}">
+        <span *ngIf="thugon" class="font-16pt   text-white">Doanh thu tháng này</span>
+        <form *ngIf="!thugon" [formGroup]="frmBaoCao1" (ngSubmit)="onBaoCao()"
+            class="d-flex flex-wrap align-items-center p-0">
+            <div class=" px-2">
+                <mat-form-field>
+                    <mat-label>Từ ngày</mat-label>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="NgayBD">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class=" px-2">
+                <mat-form-field>
+                    <mat-label>Đến ngày</mat-label>
+                    <input matInput [matDatepicker]="picker2" placeholder="Choose a date" formControlName="NgayKT">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="px-2">
+                <button type="submit" mat-raised-button color="primary" [disabled]="frmBaoCao1.invalid">Xem</button>
+            </div>
+        </form>
+    </div>
+    <div class="card-body ">
+        {{getDoanhThu()}}
+    </div>
+</div>

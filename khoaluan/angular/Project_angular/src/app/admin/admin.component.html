@@ -1,0 +1,45 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
+        <mat-sidenav [opened]='true' class="bg-dark border-0" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+            [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <div class="d-flex flex-row bg-info align-items-center" style="height: 64px;">
+                <span class="mx-2 rounded-circle overflow-hidden">
+                    <img style="height: 40px;width: 40px" src="{{api_url}}/upload/user/{{currentUser.Hinh}}" alt="">
+                </span>
+                <span class="text-white" style="line-height: 40px"> {{currentUser.Ten}}</span>
+            </div>
+            <mat-nav-list>
+
+                <a class="text-white teal" mat-list-item routerLink="." *ngFor="let nav of fillerNav"
+                    [routerLink]="['/admin/',nav.link]" routerLinkActive="router-link-active">
+                    <i class="nav-icon fa fa-list-alt mr-3" style="color: #73818f"></i>
+                    <span *ngIf="nav.name=='Hóa đơn xuất';else elseBlock" [matBadge]="getCountDH()" matBadgeColor="warn"
+                        matBadgeOverlap="false">{{nav.name}}</span>
+                    <ng-template #elseBlock>
+                        <span>{{nav.name}}</span>
+                    </ng-template>
+
+
+                    <!-- <mat-divider class="bg-secondary"></mat-divider> -->
+                </a>
+                <mat-divider class="bg-secondary"></mat-divider>
+                <a class="text-white teal" mat-list-item (click)="onLogout()">
+                    <i class="fas fa-sign-out-alt mr-3" style="color: #73818f"></i> Log out
+                </a>
+            </mat-nav-list>
+
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <mat-toolbar color="primary" class="example-toolbar">
+                <button mat-icon-button (click)="snav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <h1 class="example-app-name" [routerLink]="['/']" routerLinkActive="router-link-active">ADMIN</h1>
+            </mat-toolbar>
+            <div class="px-md-5 py-md-4 px-0 pt-3 mt-5 mt-md-0  ">
+                <router-outlet></router-outlet>
+            </div>
+
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

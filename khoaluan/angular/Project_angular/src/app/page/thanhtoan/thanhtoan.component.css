@@ -1,0 +1,50 @@
+::ng-deep .mat-horizontal-stepper-header {
+  pointer-events: none !important;
+}
+::ng-deep .mat-horizontal-content-container {
+  padding: 0px !important;
+}
+::ng-deep .mat-step-header {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  justify-content: space-evenly;
+}
+.m_form_group {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem 0px;
+}
+.m_form_group label {
+  padding: 0px;
+}
+.m_form_group div {
+  padding: 0px;
+  position: relative;
+}
+.m_form_group span {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 0.3rem;
+}
+.my_sticky {
+  margin-top: auto;
+  position: sticky;
+  bottom: 0;
+  background: white;
+}
+.my_fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: white;
+  width: 100%;
+}
+.contain_sticky {
+  display: flex;
+  flex-direction: column;
+  /* height: 400px;
+  overflow: auto; */
+}

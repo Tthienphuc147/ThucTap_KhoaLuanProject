@@ -1,0 +1,5 @@
+<mat-progress-bar *ngIf="is_loading" mode="indeterminate" class="example-tree-progress-bar" style="z-index: 99999">
+</mat-progress-bar>
+<div (window:resize)="onResize($event)">
+    <router-outlet></router-outlet>
+</div>

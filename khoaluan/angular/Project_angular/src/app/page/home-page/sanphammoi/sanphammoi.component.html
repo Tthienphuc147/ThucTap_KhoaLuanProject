@@ -1,0 +1,61 @@
+<mat-progress-bar
+    *ngIf="is_loading"
+    mode="indeterminate"
+    class="example-tree-progress-bar"
+>
+</mat-progress-bar>
+<ngx-slick-carousel
+    #slickModal="slick-carousel"
+    [config]="slideConfig"
+    class="d-flex flex-row py-2 overflow-hidden"
+>
+    <div
+    ngxSlickItem
+        class="col-lg-3  col-md-4 col-6 px-1 px-md-2 "
+        *ngFor="let item of sanphamtab; trackBy: trackByFn"
+    >
+        <div class="py-3">
+            <div class="card box-item_slide text-center mat-elevation-z3">
+                <div [routerLink]="['/chitietsanpham',+item.id]" routerLinkActive="router-link-active"
+                    class="box_img d-flex justify-content-center" style='height: 15rem;overflow: hidden;position: relative;'>
+                    <img class="card-img-top w-100 h-100 p-2" src="{{api_url}}/upload/sanpham/{{ item?.Hinh }}"
+                        alt="Card image">
+                        <div class='bg-image'></div>
+                </div>
+                <div class="card-content pt-2">
+                    <span
+                    class="card_title text-left text-truncate d-block mx-auto w-90 " style="color:#b2b2b2">{{ item.TenDanhMuc}}</span>
+                    <a class="text-decoration-none">
+                        <span
+                            class="card_title font-weight-bold text-left text-truncate d-block mx-auto w-90 pb-3" style="color:#000">{{ item.TenSanPham }}</span>
+                    </a>
+                    <ng-container *ngIf="item?.SoLuongTon === 0;else elseBlock">
+                        <span class="card-cost text-left d-block">Hết hàng</span>
+                        <div class="d-flex flex-row text-left justify-content-center">
+                            <span class="card_old_cost text-left invisible">-</span>
+                        </div>
+                    </ng-container>
+                    <ng-template #elseBlock>
+                        <span class="card-cost text-left d-flex justify-content-between">
+                            {{ item?.price * (1-item?.rate) | currency:'VND':'symbol'}}
+                            <span class="cart-button pr-3"><i class="fas fa-cart-plus"></i></span>
+                        </span>
+                        <div class="d-flex flex-row justify-content-center">
+                            <ng-container *ngIf="item?.rate != null; else elseBlock2">
+                                <span class="card_old_cost text-left">
+                                    {{item?.price | currency:'VND':'symbol'}}
+                                </span>
+                                <span class="card_label_km btn btn-sm btn-danger p-0">
+                                    -{{ item?.rate * 100 | number:'1.0-1' }}%
+                                </span>
+                            </ng-container>
+                            <ng-template #elseBlock2>
+                                <span class="card_old_cost text-left invisible">-</span>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</ngx-slick-carousel>

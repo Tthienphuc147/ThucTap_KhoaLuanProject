@@ -1,0 +1,38 @@
+.title_chitiet{
+    font-size: 2.5rem;
+}
+.btn_muangay,.btn_themsp{
+    width: 10rem !important;
+}
+.btn_muangay{
+    background-color: #06998F;
+    border: 1px solid #06998F;
+    color:#fff;
+}
+.out-sell{
+    font-size:20px;
+}
+.btn-noti{
+    background-color: #06998F;
+    color: #fff;
+    border-left: 0;
+    border-radius: 0;
+}
+.btn-show{
+    background-color: #06998F;
+    color: #fff;
+}
+.input-noti{
+    width: 15rem;
+}
+.input-noti::placeholder{
+    padding-left: 0.7rem;
+}
+.img_sanpham{
+    box-shadow: 2px 2px 6px 0 rgba(0,0,0,.1),0 1px 1px 0 transparent,0 1px 3px 0 rgba(0,0,0,.12)!important;
+
+}
+::ng-deep .mat-ink-bar{
+    background-color: #06998F !important;
+
+}

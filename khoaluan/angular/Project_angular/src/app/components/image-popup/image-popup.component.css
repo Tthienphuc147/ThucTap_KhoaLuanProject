@@ -1,0 +1,14 @@
+.button-close{
+    border: 1px solid transparent;
+    width: 2rem !important;
+    height: 2rem !important;
+    border-radius: 50%;
+    background-color: #06998F;
+    padding: 0.4rem;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+.img{
+    min-width: 35rem;
+}

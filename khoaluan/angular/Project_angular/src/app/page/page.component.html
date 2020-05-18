@@ -1,0 +1,40 @@
+<!-- <mat-sidenav-container style="z-index: 9999">
+    <mat-sidenav #sidenav2 position="end" [(opened)]="opened_filter" [fixedInViewport]="true" [fixedTopGap]="65"
+        mode="over" class="p-3">
+        <div style="max-width: 200px;height: 100%;">
+            <app-box-filter></app-box-filter>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav #sidenav position="start" [(opened)]="opened" [fixedInViewport]="true" [fixedTopGap]="70" mode="over"
+        style="background: none;border:none;box-shadow: none !important;height: fit-content;">
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let dm of danhmucs ;let i=index">
+                <mat-expansion-panel-header (click)="expandPanel($event)">
+                    <div class="p-3">
+                        <div>
+                            <span (click)="onClickDanhMuc(dm)" class="{{dm.Hinh}}" style="width: 1.25rem"></span>
+                            <label class=" m-0 ml-2 "> {{ dm?.Ten }}</label>
+                        </div>
+                    </div>
+                </mat-expansion-panel-header>
+                <mat-list class="py-0 px-3">
+                    <mat-divider>
+                    </mat-divider>
+                    <ng-container *ngFor="let item of getsub_danhmuc(dm?.id,6)" class="text-center">
+                        <mat-list-item (click)="onClickDanhMuc(item)" style="font-size:0.8rem;height: 2rem;">
+                            <button mat-button>{{item?.Ten}}</button>
+                        </mat-list-item>
+                        <mat-divider>
+                        </mat-divider>
+                    </ng-container>
+                </mat-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-sidenav>
+</mat-sidenav-container> -->
+
+<div>
+    <app-header></app-header>
+    <router-outlet (deactivate)="onDeactivate()"></router-outlet>
+    <app-footer></app-footer>
+</div>

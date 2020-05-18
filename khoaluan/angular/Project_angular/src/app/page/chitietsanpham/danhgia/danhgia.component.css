@@ -1,0 +1,43 @@
+.mystar {
+  font-size: 1.5rem;
+  color: #b0c4de;
+}
+.filled {
+  color: #ffc107;
+}
+.star-point{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 14rem;
+    padding: 1rem;
+    border-right: 1px solid #e1e1e1;
+}
+.star-point--title{
+    font-size: 20px;
+    font-weight: bold;
+}
+.star-points{
+    font-size: 2.5rem;
+    color: #ffc107;
+}
+.review-title{
+    padding-left: 2.4rem;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0;
+    padding-bottom: 1rem;
+}
+.process--point{
+    min-width: 17rem;
+    border-radius: 0;
+}
+.progress-bar-success{
+    background-color: #06998F;
+}
+.btn_send_danhgia{
+    background-color: #06998F;
+    color:#fff;
+    border-color: #06998F;
+}
