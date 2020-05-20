@@ -54,7 +54,7 @@
                 <ng-container matColumnDef="TiLe">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Tỉ lệ </th>
                     <td mat-cell *matCellDef="let item" class="px-2 ">
-                        <span *ngIf="item.isShow">{{item.obj.TiLe}}</span>
+                        <span *ngIf="item.isShow">{{item.obj?.TiLe}}</span>
                         <input style="width: 50px" class="form-control mx-auto" *ngIf="!item.isShow" type="number"
                             [(ngModel)]="item.obj.TiLe">
                     </td>
