@@ -1,12 +1,12 @@
 <mat-progress-bar *ngIf="loading " mode="indeterminate" class="example-tree-progress-bar">
 </mat-progress-bar>
 <ng-container *ngIf="isloaded">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-lg-12 col-12 ad_long px-0 py-3 pt-5">
             <img class="mat-elevation-z4" src="{{api_url}}/upload/baner/bg{{idbaner+1}}.jpg" style="width: 100%;height: 18rem;"
                 alt="">
         </div>
-    </div>
+    </div> -->
     <div class="row">
         <div class="w-100 d-md-flex d-none py-3  justify-content-end   ">
             <button mat-raised-button color="basic" class=" mx-1 py-0  text_color_2  button_label "
@@ -19,13 +19,7 @@
     </div>
     <mat-card class="row p-0  " [ngClass]="{'shadow-none':matches}">
         <mat-card-content class="d-flex flex-row" [ngClass]="{'mat-elevation-z4 overflow-hidden': !matches}">
-            <div class="col-lg-3 col-12 d-none d-md-flex px-0 ">
-                <div class="baner_ad">
-                    <img src="{{api_url}}/upload/baner/bgleft{{idbaner+1}}.jpg" class="w-100 "
-                        style="height: 100%">
-                </div>
-            </div>
-            <div class="col-lg-9 px-md-0 px-1 d-flex flex-wrap ">
+            <div class="col-lg-12 px-md-0 px-1 d-flex flex-wrap ">
                 <div *ngFor="let item of products" class="col-lg-3 col-6 box_item d-block p-0 m-0 ">
                     <div class="card box-item text-center  w-100  mat-elevation-z2" style="height: 100%">
                         <div class="box_img p-2" style="height: 150px; overflow: hidden">

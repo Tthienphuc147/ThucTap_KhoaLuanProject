@@ -1,0 +1,97 @@
+<div class="body-content">
+    <div class="d-flex flex-wrap">
+        <div class="col-xl-3 col-md-6 py-3 ">
+            <div class="card shadow card-cascade cascading-admin-card">
+                <div class="admin-up">
+                    <i class="fas fa-users fa bg-primary"></i>
+                    <div class="data">
+                        <p>User</p>
+                        <h4><strong>{{getCountUser()}}</strong></h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="progress">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-primary"
+                            role="progressbar" style="width: 25%">
+                        </div>
+                    </div>
+                    <p class="card-text">Better than last week (25%)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 py-3 ">
+            <div class="card shadow card-cascade cascading-admin-card">
+                <div class="admin-up">
+                    <i class="fas fa-box fa bg-warning"></i>
+                    <div class="data">
+                        <p>Loại Sản phẩm</p>
+                        <h4><strong>{{getCountDM()}}</strong></h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="progress">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25"
+                            class="progress-bar bg grey darken-2" role="progressbar" style="width: 25%">
+                        </div>
+                    </div>
+                    <p class="card-text">Worse than last week (25%)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 py-3 ">
+            <div class="card shadow card-cascade cascading-admin-card">
+                <div class="admin-up">
+                    <i class="fas fa fa-file-invoice bg-info"></i>
+                    <div class="data">
+                        <p>Hóa đơn</p>
+                        <h4><strong>{{getCountHDX()}}</strong></h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="progress">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" class="progress-bar grey darken-2"
+                            role="progressbar" style="width: 75%">
+                        </div>
+                    </div>
+                    <p class="card-text">Worse than last week (75%)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 py-3 ">
+            <div class="card shadow card-cascade cascading-admin-card">
+                <div class="admin-up">
+                    <i class="far fa-chart-bar fa bg-danger"></i>
+                    <div class="data">
+                        <p>Doanh thu tháng này</p>
+                        <h4><strong>{{getDoanhThu() | currency:'VND'}}</strong></h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="progress">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-primary"
+                            role="progressbar" style="width: 25%">
+                        </div>
+                    </div>
+                    <p class="card-text">Better than last week (25%)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-wrap">
+        <div class="col-12 py-3 px-0 px-md-3 ">
+            <app-chart-doanhthu></app-chart-doanhthu>
+        </div>
+        <div class="col-md-8 col-12 py-3 px-0 px-md-3">
+            <app-chart-top-sanpham></app-chart-top-sanpham>
+        </div>
+        <div class="col-md-4 pl-md-3 col-12 py-3 px-0 px-md-3">
+            <app-baocao-sanpham [thugon]="true"></app-baocao-sanpham>
+        </div>
+        <div class="col-12 py-3 px-0 px-md-3">
+            <app-baocao-donhang [thugon]="true"></app-baocao-donhang>
+        </div>
+    </div>
+    <div class="d-flex flex-row py-5">
+
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<form [formGroup]="frm" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+        <div class="d-flex flex-row justify-content-between">
+            <label>Ngày nhập:</label>
+            <span [ngClass]="onValidatorTextColor('NgayNhap')" [innerHTML]="onValidator('NgayNhap')"></span>
+        </div>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="NgayNhap">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <mat-form-field class="w-100">
+        <mat-label>Nhà cung cấp</mat-label>
+        <mat-select formControlName="idNCC">
+            <ng-container *ngIf="nhacungcaps">
+                <mat-option *ngFor="let item of nhacungcaps" [value]="item.id">
+                    {{item.Ten}}
+                </mat-option>
+            </ng-container>
+        </mat-select>
+    </mat-form-field>
+    <div class="d-flex flex-row ">
+        <button type="submit" [disabled]="frm.invalid || is_loading" mat-flat-button color="warn" class="mr-2">
+            <div class="d-flex justify-content-center position-relative">
+                <div class="spinner-border text-muted position-absolute" *ngIf="is_loading"></div>
+                <span> Thêm</span>
+            </div>
+        </button>
+        <button type="reset" mat-stroked-button color="basic">Làm mới</button>
+
+    </div>
+</form>

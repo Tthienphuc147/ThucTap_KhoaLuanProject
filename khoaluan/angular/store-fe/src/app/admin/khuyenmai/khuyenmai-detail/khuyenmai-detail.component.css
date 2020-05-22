@@ -1,0 +1,13 @@
+.example-table-container {
+  position: relative;
+  max-height: 400px;
+  width: 300px;
+  overflow: auto;
+}
+.mat-menu-content {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+.body_content input {
+  max-width: 300px;
+}

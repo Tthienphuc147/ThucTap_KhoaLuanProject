@@ -1,0 +1,29 @@
+<form [formGroup]="frm" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+        <div class="d-flex flex-row justify-content-between">
+            <label>Tên:</label>
+            <span [ngClass]="onValidatorTextColor('Ten')" [innerHTML]="onValidator('Ten')">
+            </span>
+        </div>
+        <input [ngClass]="onValidatorBorderColor('Ten')" class="form-control " placeholder="Nhập tên địa điểm "
+            formControlName="Ten" />
+    </div>
+    <mat-form-field class="w-100">
+        <mat-label>Parent</mat-label>
+        <mat-select formControlName="idParent">
+            <mat-option *ngFor="let item of diadiems" [value]="item?.id">
+                {{item?.Ten}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="d-flex flex-row ">
+        <button type="submit" [disabled]="frm.invalid || is_loading" mat-flat-button color="warn" class="mr-2">
+            <div class="d-flex justify-content-center position-relative">
+                <div class="spinner-border text-muted position-absolute" *ngIf="is_loading"></div>
+                <span> Cập nhật</span>
+            </div>
+        </button>
+        <button type="button" (click)="onReset()" mat-stroked-button color="basic">Làm mới</button>
+
+    </div>
+</form>

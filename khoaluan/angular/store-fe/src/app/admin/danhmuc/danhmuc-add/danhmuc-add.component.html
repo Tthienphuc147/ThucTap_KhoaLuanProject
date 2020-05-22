@@ -1,0 +1,41 @@
+<form [formGroup]="frmAdd" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+        <div class="d-flex flex-row justify-content-between">
+            <label>Tên:</label>
+            <span [ngClass]="onValidatorTextColor('Ten')" [innerHTML]="onValidator('Ten')"></span>
+        </div>
+        <input class="form-control " [ngClass]="onValidatorBorderColor('Ten')" placeholder="Nhập tên nhà cung cấp "
+            formControlName="Ten" />
+    </div>
+
+    <mat-form-field class="w-100">
+        <mat-label>Parent</mat-label>
+        <mat-select formControlName="idParent">
+            <ng-container *ngIf="danhmucs">
+                <mat-option [value]="null">null</mat-option>
+                <mat-option *ngFor="let danhmuc of danhmucs" [value]="danhmuc.id">
+                    {{danhmuc.Ten}}
+                </mat-option>
+            </ng-container>
+        </mat-select>
+    </mat-form-field>
+    <div class="form-group">
+        <div class="d-flex flex-row justify-content-between">
+            <label>Hình:</label>
+            <span [ngClass]="onValidatorTextColor('Hinh')" [innerHTML]="onValidator('Hinh')"></span>
+        </div>
+        <input class="form-control" [ngClass]="onValidatorBorderColor('Hinh')" placeholder="Nhập tên nhà cung cấp "
+            formControlName="Hinh" />
+    </div>
+
+    <div class="d-flex flex-row ">
+        <button type="submit" [disabled]="frmAdd.invalid || is_loading" mat-flat-button color="warn" class="mr-2">
+            <div class="d-flex justify-content-center position-relative">
+                <div class="spinner-border text-muted position-absolute" *ngIf="is_loading"></div>
+                <span> Thêm</span>
+            </div>
+        </button>
+        <button type="reset" mat-stroked-button color="basic">Làm mới</button>
+
+    </div>
+</form>

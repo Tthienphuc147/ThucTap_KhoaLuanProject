@@ -1,0 +1,50 @@
+<form [formGroup]="frm" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+        <div class="d-flex flex-row justify-content-between">
+            <label>Tên:</label>
+            <span [ngClass]="onValidatorTextColor('Ten')" [innerHTML]="onValidator('Ten')"></span>
+        </div>
+        <input class="form-control " [ngClass]="onValidatorBorderColor('Ten')" placeholder="Nhập tên nhà cung cấp "
+            formControlName="Ten" />
+    </div>
+    <div class="form-group">
+        <div class="d-flex flex-row justify-content-between">
+            <label>Mô tả:</label>
+            <span [ngClass]="onValidatorTextColor('MoTa')" [innerHTML]="onValidator('MoTa')"></span>
+        </div>
+        <input class="form-control " [ngClass]="onValidatorBorderColor('MoTa')" placeholder="Nhập tên nhà cung cấp "
+            formControlName="MoTa" />
+    </div>
+    <div class="form-group">
+        <div class="d-flex flex-row justify-content-between">
+            <label>Ngày bắt đầu:</label>
+            <span [ngClass]="onValidatorTextColor('NgayBD')" [innerHTML]="onValidator('NgayBD')"></span>
+        </div>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="NgayBD">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <div class="d-flex flex-row justify-content-between">
+            <label>Ngày kết thúc:</label>
+            <span [ngClass]="onValidatorTextColor('NgayKT')" [innerHTML]="onValidator('NgayKT')"></span>
+        </div>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker2" placeholder="Choose a date" formControlName="NgayKT">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="d-flex flex-row ">
+        <button type="submit" [disabled]="frm.invalid || is_loading" mat-flat-button color="warn" class="mr-2">
+            <div class="d-flex justify-content-center position-relative">
+                <div class="spinner-border text-muted position-absolute" *ngIf="is_loading"></div>
+                <span> Thêm</span>
+            </div>
+        </button>
+        <button type="reset" mat-stroked-button color="basic">Làm mới</button>
+
+    </div>
+</form>
