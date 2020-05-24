@@ -1,0 +1,8 @@
+.menu_home .nav-item:hover{
+    text-decoration: underline;
+    color:#fff !important;
+}
+a.text-light:hover {
+    color: #fff!important;
+}
+

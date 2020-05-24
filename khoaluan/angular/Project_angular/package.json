@@ -43,6 +43,7 @@
         "ng2-ckeditor": "^1.2.4",
         "ngx-editor": "^4.1.0",
         "ngx-image-zoom": "^0.6.0",
+        "ngx-skeleton-loader": "^2.0.0",
         "ngx-slick-carousel": "^0.4.6",
         "reflect-metadata": "^0.1.13",
         "rxjs": "~6.4.0",

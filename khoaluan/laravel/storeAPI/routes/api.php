@@ -79,7 +79,7 @@ Route::post('profile/doimatkhau','Api\UserController@doimatkhau');
 Route::get('password_reset','Api\ResetPasswordController@index');
 Route::post('submit-order','Api\OrderController@submitOrder');
 Route::get('test','Api\OrderController@test');
-Route::post('signup', 'Api\AuthController@register'); 
+Route::post('signup', 'Api\AuthController@register');
 Route::post('login', 'Api\AuthController@login');
 Route::get('danhgia-fetch', 'Api\DanhGiaController@fetchList');
 Route::post('khuyenmai-refer-detail', 'Api\KhuyenMaiController@referDetail');
@@ -87,11 +87,22 @@ Route::post('hoadonnhap-refer-detail', 'Api\ChiTietHoaDonNhapController@referDet
 Route::post('hoadonxuat-refer-detail', 'Api\ChiTietHoaDonXuatController@referDetail');
 Route::post('hoadonxuat-filter','Api\HoaDonXuatController@filterByIdTrangThai');
 Route::post('doanhthutheothang','Api\BaoCaoController@getDoanhThuTheoThang');
-Route::group(['namespace' => 'Api','middleware' => 'jwt.auth'], function () { 
+Route::group(['namespace' => 'Api','middleware' => 'jwt.auth'], function () {
 	Route::get('auth', 'AuthController@user');
 	Route::post('logout', 'AuthController@logout');
 	Route::post('fetch-export-order','ProfileController@fetchExportOrder');
 
 });
+//api tin tuc
+Route::get('chitiettintuc/{id}','Api\TinTucController@getTinTuc');
+Route::get('listtintuc','Api\TinTucController@getAllTinTuc');
+// Route::get('loaitintuc/{id}','Api\LoaiTinTucController@getLoaiTinTuc');
+Route::get('loaitintuclienquan/{id}','Api\TinTucController@getAllTinTucTheoLoai');
+
+//api dich vu
+Route::get('chitietdichvu/{id}','Api\DichVuController@getDichVu');
+Route::get('listdichvu','Api\DichVuController@getAllDichVu');
+// Route::get('loaitintuc/{id}','Api\LoaiTinTucController@getLoaiTinTuc');
+Route::get('loaidichvulienquan/{id}','Api\DichVuController@getAllDichVuTheoLoai');
 
 Route::middleware('jwt.refresh')->get('/token/refresh', 'AuthController@refresh');

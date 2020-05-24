@@ -21,6 +21,12 @@ use App\SanPhamBanMua;
 use App\TrangThai;
 use App\User;
 use App\PasswordReset;
+use App\DanhMucTinTuc;
+use App\LoaiTinTuc;
+use App\TinTuc;
+use App\DanhMucDichVu;
+use App\LoaiDichVu;
+use App\DichVu;
 class DataController extends Controller
 {
     /**
@@ -47,7 +53,13 @@ class DataController extends Controller
         $trangthai=TrangThai::all();
         $user=User::all();
         $password_reset=PasswordReset::all();
-        return response()->json(compact('nhasanxuat','nhacungcap','chitiethoadonnhap','chitiethoadonxuat','chitietkhuyenmai','danhgia','danhmuc','danhmuchinh','diadiem','hoadonnhap','hoadonxuat','khuyenmai','quyen','sanpham','trangthai','user','password_reset'),200,[],JSON_NUMERIC_CHECK);
+        $danhmuctintuc=DanhMucTinTuc::all();
+        $loaitintuc=LoaiTinTUc::all();
+        $tintuc=TinTuc::all();
+        $danhmucdichvu=DanhMucDichVu::all();
+        $loaidichvu=LoaiDinhVu::all();
+        $dichvu=DichVu::all();
+        return response()->json(compact('nhasanxuat','nhacungcap','chitiethoadonnhap','chitiethoadonxuat','chitietkhuyenmai','danhgia','danhmuc','danhmuchinh','diadiem','hoadonnhap','hoadonxuat','khuyenmai','quyen','sanpham','trangthai','user','password_reset','danhmuctintuc','loaitintuc','tintuc','danhmucdichvu','loaidichvu','dichvu'),200,[],JSON_NUMERIC_CHECK);
     }
 
     /**

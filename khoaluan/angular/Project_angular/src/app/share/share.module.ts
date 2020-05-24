@@ -7,6 +7,7 @@ import { TimeAgoPipe } from 'time-ago-pipe';
 import { DemoMaterialModule } from '../admin/masterial-module';
 import { NoSanitizePipe } from '../pipe/no-sanitize.pipe';
 import { TextTruncatePipe } from '../pipe/text-truncate.pipe';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
     declarations: [TextTruncatePipe, TimeAgoPipe, NoSanitizePipe],
@@ -17,6 +18,7 @@ import { TextTruncatePipe } from '../pipe/text-truncate.pipe';
         FormsModule,
         NgbModule,
         RouterModule,
+        NgxSkeletonLoaderModule,
     ],
     exports: [
         DemoMaterialModule,

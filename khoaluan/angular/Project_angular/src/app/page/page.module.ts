@@ -1,3 +1,5 @@
+import { DichVuModule } from './dichvu/dichvu.module';
+import { TinTucModule } from './tintuc/tintuc.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RecaptchaComponent, RecaptchaModule } from 'ng-recaptcha';
@@ -18,6 +20,9 @@ import { PageRoutingModule } from './page-routing.module';
 import { PageComponent } from './page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SearchModule } from './search/search.module';
+import { TintucComponent } from './tintuc/tintuc.component';
+import { LoaiTinTucComponent } from './loai-tin-tuc/loai-tin-tuc.component';
+import { ChiTietBaoVietComponent } from './chi-tiet-bao-viet/chi-tiet-bao-viet.component';
 
 RecaptchaComponent.prototype.ngOnDestroy = function() {
     if (this.subscription) {
@@ -36,7 +41,7 @@ RecaptchaComponent.prototype.ngOnDestroy = function() {
         BoxTimkiemComponent,
         DangnhapComponent,
         DangkyComponent,
-        ResetPasswordComponent
+        ResetPasswordComponent,
     ],
     imports: [
         HttpClientModule,
@@ -45,7 +50,9 @@ RecaptchaComponent.prototype.ngOnDestroy = function() {
         SlickCarouselModule,
         HomePageModule,
         RecaptchaModule,
-        SearchModule
+        SearchModule,
+        TinTucModule,
+        DichVuModule
     ],
     entryComponents: [
         DangkyComponent,

@@ -1,0 +1,86 @@
+<!-- <app-loading></app-loading> -->
+
+<ng-container *ngIf="!(blog && author && listBlog)" >
+    <div class="background_loading"></div>
+    <div class="img_loading">
+        <!-- <img src="https://stc-id.zing.vn/login/images/loader.gif" height="100px" width="100px" alt=""> -->
+        <div class="loader">Loading...</div>
+    </div>
+</ng-container>
+<ng-container *ngIf="blog && author && listBlog" >
+    <nav aria-label="breadcrumb w-100 mb-0" style="position: relative">
+        <ol class="breadcrumb fluid-container mb-0">
+            <div class="container d-flex">
+                <li class="breadcrumb-item"><a [routerLink]="['/']" routerLinkActive="router-link-active" class="primary-user-color">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a>Tin tức</a></li>
+            </div>
+
+        </ol>
+
+    </nav>
+    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('https://www.wallpaperflare.com/static/641/221/156/computer-notebook-laptop-working-wallpaper.jpg');" >
+        <div class="container">
+          <div class="row same-height justify-content-center">
+            <div class="col-md-12 col-lg-10">
+              <div class="post-entry text-center">
+                <span class="post-category text-white bg-success mb-3">{{blog.ten_loai_tin_tuc}}</span>
+                <h2 class="mb-4">{{blog.tieu_de}}</h2>
+                <div class="post-meta align-items-center text-center">
+                  <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="https://pickaface.net/gallery/avatar/20160628_210808_4390_tech.png" alt="Image" class="img-fluid"></figure>
+                  <span class="d-inline-block mt-1">Người đăng: {{author.Ten}}</span>
+                  <span>&nbsp;-&nbsp; {{blog.created_at | date: 'h:mm a, dd/MM/yyyy' }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="site-section py-lg">
+        <div class="container">
+
+          <div class="row blog-entries element-animate">
+
+            <div class="col-md-12 col-lg-8 main-content">
+
+              <div class="post-content-body" [innerHtml]="blog?.noi_dung">
+              </div>
+
+
+
+
+
+
+            </div>
+
+            <!-- END main-content -->
+
+            <div class="col-md-12 col-lg-4 sidebar">
+
+              <div class="sidebar-box">
+                <h3 class="heading">Bài viết liên quan</h3>
+                <div class="post-entry-sidebar">
+                  <ul>
+                    <li *ngFor="let item of listBlog" >
+                      <a [routerLink]="['/chitietbaiviet/'+item.id]" (click)="goToBlog()">
+                        <img src="{{api_url}}/upload/tintuc/{{item?.hinh_anh}}" alt="Image placeholder" class="mr-4">
+                        <div class="text">
+                          <h4>{{item?.tieu_de}}</h4>
+                          <div class="post-meta">
+                            <span class="mr-2">{{item?.created_at | date: 'h:mm a, dd/MM/yyyy' }}</span>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+            <!-- END sidebar -->
+
+          </div>
+        </div>
+      </section>
+
+</ng-container>

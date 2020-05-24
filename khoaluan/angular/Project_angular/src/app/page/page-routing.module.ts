@@ -1,3 +1,5 @@
+import { DichVuComponent } from './dichvu/dichvu.component';
+import { TintucComponent } from './tintuc/tintuc.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../helper/auth.guard';
@@ -31,6 +33,20 @@ const routes: Routes = [
                     )
             },
             {
+                path: 'chitietbaiviet/:id',
+                loadChildren: () =>
+                    import('./chi-tiet-bao-viet/chitietbaiviet.module').then(
+                        m => m.ChiTietBaiVietModule
+                    )
+            },
+            {
+                path: 'chitietdichvu/:id',
+                loadChildren: () =>
+                    import('./chi-tiet-dich-vu/chitietdichvu.module').then(
+                        m => m.ChiTietDichVuModule
+                    )
+            },
+            {
                 path: 'giohang',
                 component: GiohangComponent
             },
@@ -54,6 +70,14 @@ const routes: Routes = [
                 path: 'search',
                 loadChildren: () =>
                     import('./search/search.module').then(m => m.SearchModule)
+            },
+            {
+                path: 'tintuc',
+                component: TintucComponent
+            },
+            {
+                path: 'dichvu',
+                component: DichVuComponent
             }
         ]
     }

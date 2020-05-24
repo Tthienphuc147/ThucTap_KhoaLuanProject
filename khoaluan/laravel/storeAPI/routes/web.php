@@ -16,7 +16,7 @@ header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
 header('Access-Control-Allow-Headers: Origin, Content-Type,X-Requested-With,Authorization');
 
 
-Carbon\Carbon::setLocale('vi'); 
+Carbon\Carbon::setLocale('vi');
 
 
 Route::post('fetch_data','PageController@fetch_data');

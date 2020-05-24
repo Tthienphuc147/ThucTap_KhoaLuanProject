@@ -1,0 +1,57 @@
+<nav aria-label="breadcrumb w-100" style="position: relative">
+    <ol class="breadcrumb fluid-container mb-0">
+        <div class="container d-flex">
+            <li class="breadcrumb-item"><a [routerLink]="['/']" routerLinkActive="router-link-active" class="primary-user-color">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a>Dịch vụ</a></li>
+        </div>
+
+    </ol>
+
+</nav>
+
+<div class="py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Dịch vụ của cửa hàng Phuc Store</h3>
+          <p>Cửa hàng Phuc Store chuyên sửa chữa, cung cấp, lắp đặt: thiết bị văn phòng, máy vi tính, nhà thông minh, camera an ninh....</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="site-section" style="padding: 1rem !important;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 mb-4" *ngFor="let item of listDichVu | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" >
+          <div class="entry2 row ">
+            <a [routerLink]="['/chitietdichvu/'+item.id]" class="col-lg-4">
+                <ng-container *ngIf="!listDichVu" >
+                    <ngx-skeleton-loader animation="pulse"></ngx-skeleton-loader>
+                </ng-container>
+                <ng-container *ngIf="listDichVu">
+                    <img src="{{api_url}}/upload/dichvu/{{item.hinh_anh}}" alt="Image" class="img-fluid rounded" style="width: 70rem;height:16rem;">
+                </ng-container>
+
+            </a>
+            <div class="excerpt col-lg-8">
+            <span class="post-category text-white bg-secondary mb-1">{{item.ten_loai_dich_vu}}</span>
+
+            <h2 class="mb-4"><a  [routerLink]="['/chitietdichvu/'+item.id]" >{{item.tieu_de}}</a></h2>
+            <div class="post-meta align-items-center text-left clearfix">
+              <figure class="author-figure mb-0 mr-3 float-left"><img src="https://pickaface.net/gallery/avatar/20160628_210808_4390_tech.png" alt="Image" class="img-fluid"  ></figure>
+              <span class="d-inline-block mt-1">Người đăng: <a href="#">{{item.display_name}}</a></span>
+              <span>&nbsp;-&nbsp; {{item.created_at | date: 'h:mm a, dd/MM/yyyy'}}</span>
+            </div>
+
+              <p>{{item.mo_ta | textTruncate:0:500:!textShow}}</p>
+              <p><a href="#" class="primary-user-color">Xem Thêm</a></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row d-flex justify-content-end">
+        <ngb-pagination [pageSize] = "6" [collectionSize]="listDichVu && listDichVu.length" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+      </div>
+    </div>
+  </div>
