@@ -475,9 +475,8 @@ ul.site-nav > li:hover .submenu {
     transition: all 0.2s linear;
 }
 .box-item:hover {
-  -webkit-box-shadow: 0px 0px 4px 0px #00000099;
-  box-shadow: 0px 0px 4px 0px #00000099;
-  z-index: 9;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+    z-index: 1;
 }
 .box-item:hover .box_img img {
     width: auto;

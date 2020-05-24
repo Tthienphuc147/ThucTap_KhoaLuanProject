@@ -21,7 +21,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
         private dataService: DataService,
         private homepageService: HomePageService
     ) {}
-    private api_url = environment.api_img;
+    public api_url = environment.api_img;
     ngOnDestroy(): void {
         if (this.subscriptions) {
             this.subscriptions.forEach((e, index) => {
