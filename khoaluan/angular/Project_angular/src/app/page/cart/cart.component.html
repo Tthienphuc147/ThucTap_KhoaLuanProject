@@ -29,14 +29,14 @@
                 </div>
             </ng-template>
         </div>
-        <div class="col-lg-1 col-2 px-md-2 text-center px-1"><span>{{ item.SoLuong}}</span></div>
+        <div class="col-lg-1 col-2 px-md-2 text-center px-1"><span>x{{ item.SoLuong}}</span></div>
     </div>
 
 </div>
 
 <div class="d-flex flex-column bg-khoi3 px-3 pt-3">
     <div class="d-flex flex-row">
-        <span class="mr-auto font-weight-bold">Thành tiền 1:</span>
-        <span class="text-danger font-weight-bold">{{loadthanhtien() | currency:'VND':'symbol'}}</span>
+        <span class="mr-auto font-weight-bold">Tổng cộng:</span>
+        <span class="primary-user-color font-weight-bold">{{loadthanhtien() | currency:'VND':'symbol'}}</span>
     </div>
 </div>

@@ -27,6 +27,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     api_url = environment.api_storage;
     show_filter = false;
+    tenDanhMuc : any;
     cleanAccents(str: string) {
         if (str === '' || str === undefined) {
             return str;
@@ -87,6 +88,7 @@ export class SearchComponent implements OnInit, OnDestroy {
             'keyword'
         ];
         this.loadData();
+        this.getTenDanhMuc();
     }
     toggleMenu() {
         this.otherService.toggle_showfilter();
@@ -96,11 +98,11 @@ export class SearchComponent implements OnInit, OnDestroy {
             return this.activatedRoute.url['value'][0].path;
         }
     }
-    // applyFilter() {
-    //     return this.sanphamall.filter(e => {
-    //         return this.cleanAccents(e.TenSanPham).includes(this.cleanAccents(this.keyword))
-    //     })
-    // }
+    applyFilter() {
+        return this.sanphamall.filter(e => {
+            return this.cleanAccents(e.TenSanPham).includes(this.cleanAccents(this.keyword))
+        })
+    }
     findChildDeQuy_danhmuc(id: number, array: number[]) {
         array.push(Number.parseInt(id + ''));
         this.danhmucs.forEach(element => {
@@ -212,123 +214,6 @@ export class SearchComponent implements OnInit, OnDestroy {
         }
         return items;
     }
-    // private myFilter(items: Sanpham[]) {
-    //     if (this.my_array.length !== 0) {
-    //         items = items.filter(e => {
-    //             return (
-    //                 this.my_array.filter(i => {
-    //                     return (
-    //                         Number.parseInt(e.idDanhMuc + '') ===
-    //                         Number.parseInt(i + '')
-    //                     );
-    //                 }).length > 0
-    //             );
-    //         });
-    //     }
-
-    //     if (
-    //         typeof this.nsx !== 'undefined' &&
-    //         this.nsx !== [] &&
-    //         this.nsx !== undefined
-    //     ) {
-    //         if (this.nsx.length > 0) {
-    //             items = items.filter(e => {
-    //                 return (
-    //                     this.nsx.filter(i => {
-    //                         return (
-    //                             Number.parseInt(i + '') ===
-    //                             Number.parseInt(e.idNSX + '')
-    //                         );
-    //                     }).length > 0
-    //                 );
-    //             });
-    //         }
-    //     }
-
-    //     if (this.keyword !== '' && this.keyword !== undefined) {
-    //         items = items.filter(e => {
-    //             return this.cleanAccents(
-    //                 e.TenSanPham.trim().toLowerCase()
-    //             ).includes(this.cleanAccents(this.keyword));
-    //         });
-    //     }
-
-    //     if (this.sortby !== '') {
-    //         if (this.sortby === '1') {
-    //             items = items.sort((a, b) => {
-    //                 if (
-    //                     a.TenSanPham.toLowerCase() < b.TenSanPham.toLowerCase()
-    //                 ) {
-    //                     return -1;
-    //                 }
-    //                 if (
-    //                     a.TenSanPham.toLowerCase() > b.TenSanPham.toLowerCase()
-    //                 ) {
-    //                     return 1;
-    //                 }
-    //                 return 0;
-    //             });
-    //         }
-    //         if (this.sortby === '2') {
-    //             items = items.sort((a, b) => {
-    //                 if (
-    //                     a.TenSanPham.toLowerCase() < b.TenSanPham.toLowerCase()
-    //                 ) {
-    //                     return 1;
-    //                 }
-    //                 if (
-    //                     a.TenSanPham.toLowerCase() > b.TenSanPham.toLowerCase()
-    //                 ) {
-    //                     return -1;
-    //                 }
-    //                 return 0;
-    //             });
-    //         }
-    //         if (this.sortby === '3') {
-    //             items = items.sort((a, b) => {
-    //                 return a.id - b.id;
-    //             });
-    //         }
-    //         if (this.sortby === '4') {
-    //             items = items.sort((a, b) => {
-    //                 return b.id - a.id;
-    //             });
-    //         }
-    //     }
-    //     if (this.price !== undefined) {
-    //         if (this.price === 1) {
-    //             items = items.filter(e => {
-    //                 return (
-    //                     this.getbanggia(e.id) &&
-    //                     this.getbanggia(e.id).GiaBan * this.getTiLe(e.id) <
-    //                         1000000
-    //                 );
-    //             });
-    //         }
-    //         if (this.price === 2) {
-    //             items = items.filter(e => {
-    //                 return (
-    //                     this.getbanggia(e.id) &&
-    //                     this.getbanggia(e.id).GiaBan * this.getTiLe(e.id) >
-    //                         1000000 &&
-    //                     this.getbanggia(e.id) &&
-    //                     this.getbanggia(e.id).GiaBan * this.getTiLe(e.id) <
-    //                         3000000
-    //                 );
-    //             });
-    //         }
-    //         if (this.price === 3) {
-    //             items = items.filter(e => {
-    //                 return (
-    //                     this.getbanggia(e.id) &&
-    //                     this.getbanggia(e.id).GiaBan * this.getTiLe(e.id) >
-    //                         3000000
-    //                 );
-    //             });
-    //         }
-    //     }
-    //     return items;
-    // }
     ngOnDestroy() {
         if (this.subscriptions) {
             this.subscriptions.forEach(e => {
@@ -348,9 +233,11 @@ export class SearchComponent implements OnInit, OnDestroy {
                 );
                 this.dataSource.paginator = this.paginator;
                 this.obs = this.dataSource.connect();
+                 this.tenDanhMuc = this.obs['value'][0];
                 if (this.obs['value'].length > 0) {
                     this.isShow = true;
                 }
+
             }),
             this.danhmucService.itemsObs.subscribe(data => {
                 this.danhmucs = data;
@@ -405,5 +292,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
     onAddCart(sp) {
         this.cartService.addCart(new Cart(sp.id, 1));
+    }
+    getTenDanhMuc(){
+        return this.tenDanhMuc;
     }
 }

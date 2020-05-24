@@ -1,16 +1,56 @@
 <div class="col-12 d-flex flex-row row_cart">
-    <div class="col-lg-2 col-4">
+    <div class="col-lg-5 col-6 d-flex align-items-center">
         <div class="wrapper_img" style="max-width: 100px;max-height: 100px">
             <img *ngIf="findSanPham(item?.idSanPham)?.Hinh"
                 src="{{api_url}}/upload/sanpham/{{ findSanPham(item?.idSanPham)?.Hinh }}"
-                style="width: 100%;height: auto" alt="">
+                style="width: 4rem;
+                height: auto;" alt="">
         </div>
-    </div>
-    <div class="col-lg-7 col-8 d-flex flex-column">
-        <span class="name_sp">
-            <h5>{{ findSanPham(item.idSanPham)?.TenSanPham |titlecase }}</h5>
+        <span class="name_sp ">
+            <p class="mb-0">{{ findSanPham(item.idSanPham)?.TenSanPham |titlecase }}</p>
         </span>
-        <span class="info_sp">{{ findSanPham(item.idSanPham)?.TenNSX |titlecase }}</span>
+    </div>
+    <div class="col-lg-2 d-flex align-items-center">
+        <ng-container *ngIf="findSanPham(item.idSanPham)?.SoLuongTon === 0 ;else elseBlock">
+            <span class="card-cost">Hết hàng</span>
+        </ng-container>
+        <ng-template #elseBlock>
+            <span class="card-cost">
+                {{ findSanPham(item.idSanPham)?.price * (1-findSanPham(item.idSanPham)?.rate) | currency:'VND':'symbol'}}
+            </span>
+            <div class="flex-row" *ngIf="findSanPham(item.idSanPham)?.rate > 0">
+                <span
+                    class="card_old_cost text-center">{{findSanPham(item.idSanPham)?.price | currency:'VND':'symbol'}}</span>
+                <span class="card_label_km btn btn-sm btn-danger p-0 ">
+                    -{{ (findSanPham(item.idSanPham)?.rate)*100 | number:'1.0-1' }}%
+                </span>
+            </div>
+        </ng-template>
+    </div>
+    <div class="col-lg-2 d-flex row input-group   p-0 m-0 align-items-center">
+        <span class="input-group-prepend">
+            <button type="button" class="btn  btn-number" style="border: 1px solid #cbcaca;" (click)="onMinus()">
+                <span class="fa fa-minus" style="font-size: 11px;"></span>
+            </button>
+        </span>
+        <input class="form-control input-number text-center "  type="text" [(ngModel)]="item.SoLuong"
+            (change)="onChangeInput()" type="number">
+        <span class="input-group-append">
+            <button type="button" class="btn  btn-number" style="border: 1px solid #cbcaca;" (click)="onPlus()">
+                <span class="fa fa-plus" style="font-size: 11px;"></span>
+            </button>
+        </span>
+    </div>
+    <div class="col-lg-2 d-flex align-items-center">
+        <span class="card-cost">
+            {{ findSanPham(item.idSanPham)?.price * (1-findSanPham(item.idSanPham)?.rate) * item.SoLuong | currency:'VND':'symbol'}}
+        </span>
+    </div>
+    <div class="d-flex align-items-center">
+        <span class=" fa fa-times color-khoi2 delete-item" aria-hidden="true" style="font-size: 0.9rem"
+        (click)="onDeleteRow(item)"></span>
+    </div>
+    <!-- <div class="col-lg-7 col-8">
         <ng-container *ngIf="findSanPham(item.idSanPham)?.SoLuongTon === 0 ;else elseBlock">
             <span class="card-cost">Hết hàng</span>
         </ng-container>
@@ -29,37 +69,39 @@
         <div class="d-flex  d-lg-none">
             <div class="row input-group  mt-auto p-0 m-0">
                 <span class="input-group-prepend">
-                    <button type="button" class="btn btn-danger btn-number" (click)="onMinus()">
-                        <span class="fa fa-minus"></span>
+                    <button type="button" class="btn  btn-number" style="border: 1px solid #cbcaca;" (click)="onMinus()">
+                        <span class="fa fa-minus" style="font-size: 11px;"></span>
                     </button>
                 </span>
-                <input class="form-control input-number text-center " type="text" [(ngModel)]="item.SoLuong"
-                    (change)="onChangeInput()">
+                <input class="form-control input-number text-center "  type="text" [(ngModel)]="item.SoLuong"
+                    (change)="onChangeInput()" type="number">
                 <span class="input-group-append">
-                    <button type="button" class="btn btn-success btn-number" (click)="onPlus()">
-                        <span class="fa fa-plus"></span>
+                    <button type="button" class="btn  btn-number" style="border: 1px solid #cbcaca;" (click)="onPlus()">
+                        <span class="fa fa-plus" style="font-size: 11px;"></span>
                     </button>
                 </span>
             </div>
-            <button class="btn fa fa-trash color-khoi2  mt-auto mr-2 " (click)="onDeleteRow(item)"></button>
+            <span class=" fa fa-times color-khoi2 mt-auto mr-2 delete-item" aria-hidden="true" style="font-size: 0.9rem"
+            (click)="onDeleteRow(item)"></span>
         </div>
     </div>
     <div class="col-lg-3 p-0 d-lg-flex flex-row d-none">
-        <span class="btn fa fa-trash color-khoi2 mt-auto mr-2 " aria-hidden="true" style="font-size: 1.5rem"
-            (click)="onDeleteRow(item)"></span>
-        <div class="row input-group  mt-auto p-0 m-0">
+
+        <div class="row input-group  mt-auto p-0 m-0 mr-2">
             <span class="input-group-prepend">
-                <button type="button" class="btn btn-danger btn-number" (click)="onMinus()">
-                    <span class="fa fa-minus"></span>
+                <button type="button" class="btn  btn-number" style="border: 1px solid #cbcaca;" (click)="onMinus()">
+                    <span class="fa fa-minus" style="font-size: 11px;"></span>
                 </button>
             </span>
-            <input class="form-control input-number text-center " type="text" [(ngModel)]="item.SoLuong"
+            <input class="form-control input-number text-center "  type="text" [(ngModel)]="item.SoLuong"
                 (change)="onChangeInput()" type="number">
             <span class="input-group-append">
-                <button type="button" class="btn btn-success btn-number" (click)="onPlus()">
-                    <span class="fa fa-plus"></span>
+                <button type="button" class="btn  btn-number" style="border: 1px solid #cbcaca;" (click)="onPlus()">
+                    <span class="fa fa-plus" style="font-size: 11px;"></span>
                 </button>
             </span>
         </div>
-    </div>
+        <span class=" fa fa-times color-khoi2 mt-auto mr-2 delete-item" aria-hidden="true" style="font-size: 0.9rem"
+        (click)="onDeleteRow(item)"></span>
+    </div> -->
 </div>

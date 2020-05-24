@@ -17,7 +17,7 @@
         <div class="py-3">
             <div class="card box-item_slide text-center mat-elevation-z3">
                 <div [routerLink]="['/chitietsanpham',+item.id]" routerLinkActive="router-link-active"
-                    class="box_img d-flex justify-content-center" style='height: 15rem;overflow: hidden;position: relative;'>
+                    class="box_img d-flex justify-content-center" style='height: 13rem;overflow: hidden;position: relative;'>
                     <img class="card-img-top w-100 h-100 p-2" src="{{api_url}}/upload/sanpham/{{ item?.Hinh }}"
                         alt="Card image">
                         <div class='bg-image'></div>
@@ -36,23 +36,25 @@
                         </div>
                     </ng-container>
                     <ng-template #elseBlock>
-                        <span class="card-cost text-left d-flex justify-content-between">
-                            {{ item?.price * (1-item?.rate) | currency:'VND':'symbol'}}
-                            <span class="cart-button pr-3"><i class="fas fa-cart-plus"></i></span>
-                        </span>
-                        <div class="d-flex flex-row justify-content-center">
-                            <ng-container *ngIf="item?.rate != null; else elseBlock2">
-                                <span class="card_old_cost text-left">
-                                    {{item?.price | currency:'VND':'symbol'}}
-                                </span>
-                                <span class="card_label_km btn btn-sm btn-danger p-0">
-                                    -{{ item?.rate * 100 | number:'1.0-1' }}%
-                                </span>
-                            </ng-container>
-                            <ng-template #elseBlock2>
-                                <span class="card_old_cost text-left invisible">-</span>
-                            </ng-template>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span class="card-cost text-left d-flex justify-content-between price-label">
+                                {{ item?.price * (1-item?.rate) | currency:'VND':'symbol'}}
+                            </span>
+                            <div class="d-flex flex-row justify-content-center">
+                                <ng-container *ngIf="item?.rate != null; else elseBlock2">
+                                    <span class="card_old_cost text-left price-label">
+                                        {{item?.price | currency:'VND':'symbol'}}
+                                    </span>
+                                    <span class="card_label_km btn btn-sm btn-danger p-0 pr-2">
+                                        -{{ item?.rate * 100 | number:'1.0-1' }}%
+                                    </span>
+                                </ng-container>
+                                <ng-template #elseBlock2>
+                                    <span class="card_old_cost text-left invisible">-</span>
+                                </ng-template>
+                            </div>
                         </div>
+
                     </ng-template>
                 </div>
             </div>

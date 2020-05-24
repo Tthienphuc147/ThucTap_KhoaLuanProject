@@ -4,13 +4,26 @@
             <div class="col-lg-8 col-12 p-0">
                 <div class="wrapper_left border border-khoi rounded my-3" style="min-height: 30rem">
                     <div class="col-12 py-2 row_cart">
-                        <span class="title font-weight-bold">Giỏ hàng <small class="count_cart_small">(Có
-                                {{counts }} sản phẩm)</small>
+                        <span class="title font-weight-bold text-uppercase primary-user-color">Giỏ hàng
                         </span>
-                        <button (click)="onRemoveCart()"
-                            class="float-right color-khoi2 btn btn-outline-light btn-default fa fa-trash  "></button>
+                            <span class=" fa fa-times color-khoi2 delete-item float-right" aria-hidden="true" style="font-size: 0.9rem"
+                            (click)="onRemoveCart()"></span>
                     </div>
                     <div class="box_row_cart">
+                        <div class="col-12 d-flex flex-row row_cart">
+                            <div class="col-lg-5 font-weight-bold">
+                                <span>Sản phẩm</span>
+                            </div>
+                            <div class="col-lg-2 text-center font-weight-bold">
+                                <span>Giá tiền</span>
+                            </div>
+                            <div class="col-lg-2 text-center font-weight-bold">
+                                <span>Số lượng</span>
+                            </div>
+                            <div class="col-lg-2 text-center font-weight-bold">
+                                <span>Tổng tiền</span>
+                            </div>
+                        </div>
                         <ng-container *ngFor="let item of carts">
                             <app-row-giohang [item]=item></app-row-giohang>
                         </ng-container>
@@ -20,7 +33,7 @@
             <div class="col-lg-4 pl-lg-3 sticky_bot p-0">
                 <div class="wrapper_right border border-khoi bg-khoi3 rounded my-md-3 p-3 ">
                     <div class="col-lg-12 d-md-flex d-none ">
-                        <span class=" font-weight-bold">Thành tiền:</span>
+                        <span class=" font-weight-bold">Tạm tính:</span>
                         <span class="ml-auto font-weight-bold total_cart_small">
                             {{loadthanhtien() | currency:'VND':'symbol'}}
                         </span>
@@ -29,13 +42,12 @@
                         <hr>
                     </div>
                     <div class="col-12 d-flex">
-                        <span style="font-size: 1.4rem">Tổng tiền:</span>
-                        <span class="ml-auto text-danger font-weight-bold total_cart_biger"
+                        <span style="font-size: 1.4rem">Thành tiền:</span>
+                        <span class="ml-auto  font-weight-bold total_cart_biger primary-user-color"
                             style="font-size: 1.4rem">{{loadthanhtien() | currency:'VND':'symbol'}}</span>
                     </div>
-                    <button [disabled]="loadthanhtien() == 0" class=" btn btn-danger p-3 mt-4 w-100"
-                        (click)="handleOrder()">Tiến hành thanh
-                        toán</button>
+                    <button [disabled]="loadthanhtien() == 0" class=" btn bg-user-primary p-3 mt-4 w-100"
+                        (click)="handleOrder()">Tiến hành đặt hàng</button>
                 </div>
             </div>
         </div>

@@ -10,6 +10,15 @@
   /* justify-content: center; */
   justify-content: space-evenly;
 }
+::ng-deep .mat-step-header .mat-step-icon-selected{
+    background-color: #06998F;
+}
+::ng-deep .mat-raised-button.mat-primary{
+    background-color: #06998F;
+}
+::ng-deep .mat-step-header .mat-step-icon-state-edit{
+    background-color: #FDCA08;
+}
 .m_form_group {
   display: flex;
   flex-wrap: wrap;

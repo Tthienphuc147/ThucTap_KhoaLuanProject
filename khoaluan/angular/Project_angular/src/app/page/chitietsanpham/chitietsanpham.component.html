@@ -37,14 +37,21 @@
         <div class="col-lg-6 col-12 order-3 px-0">
             <div class="box_content_chitiet py-5">
                 <div class="px-2">
-                    <h4 class="title_chitiet">{{ product?.TenSanPham |titlecase}}</h4>
-                    <span class="text-secondary">Nhà sản xuất:</span>
-                    <span class="mr-2">{{ product?.TenNSX  |titlecase}}</span>
+                    <p class="title_chitiet">{{ product?.TenSanPham |titlecase}}</p>
+                    <span class="text-secondary font-weight-bold">Nhà sản xuất:</span>
+                    <span class="mr-2"> {{ product?.TenNSX  |titlecase}}</span>
 
-                    <div class="mota_chitiet pt-2" style="min-height: 100px;word-break: break_work"
+                    <div class=""><span class="text-secondary font-weight-bold">Thông tin sản phẩm</span><div class="mota_chitiet pt-2" style="min-height: 100px;word-break: break_work"
                         [innerHtml]="product?.MoTa">
 
                     </div>
+                    </div>
+                    <div class="jtf-custom">
+                        <a href="tel:18006501"  class="button-contact">1800.6501<span>Tư vấn miễn phí</span></a>
+                        <a href="tel:0855100001"  class="button-contact button-contact1">0855.100.001
+                        <span>Freeship Online</span></a>
+                    </div>
+
                     <hr>
 
                     <ng-container *ngIf="product && product.SoLuongTon === 0; else elseBlock">
@@ -134,48 +141,23 @@
     <br>
 </div>
 <div class="container p-0">
-    <!-- <div class="col-lg-12 p-0">
-        <div class="tab_chitiet my-2">
-            <ul class="nav nav-tabs " style="border-bottom: 1px sloid">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home">Thông tin sản phẩm</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#menu_danhgia">Đánh giá</a>
-                </li>
-            </ul>
-            <div class="tab-content  pt-md-5 px-md-3 py-1 border border-top-0  bg-khoi3" style="border-color: #e9ecef">
-                <div class="tab-pane container active" id="home">
-                    <div class="content_mota_chitiet overflow-hidden"
-                        [innerHtml]="product?.ThongTin | textTruncate:0:500:!textShow | noSanitize">
+    <div class="tab-detail--product">
+            <mat-tab-group>
+                <mat-tab label="Thông tin sản phẩm">
+                    <div class="tab-pane container pt-3">
+                        <div class="content_mota_chitiet overflow-hidden"
+                            [innerHtml]="product?.ThongTin | textTruncate:0:1500:!textShow | noSanitize">
 
+                        </div>
+                        <div class="w-100 text-center p-3"><span class="btn btn-show" (click)="textShow=!textShow">Xem thêm</span></div>
                     </div>
-                    <div class="w-100 text-center p-3"><span class="btn btn-warning" (click)="textShow=!textShow">View
-                            more</span></div>
-                </div>
-                <div class="tab-pane container fade px-1 " id="menu_danhgia">
-                    <app-danhgia></app-danhgia>
-                </div>
-            </div>
-        </div>
+                </mat-tab>
+                <mat-tab label="Đánh giá">
+                    <app-danhgia [currentName]='product?.TenSanPham'></app-danhgia>
+                </mat-tab>
+            </mat-tab-group>
+    </div>
 
-    </div> -->
-    <mat-card>
-        <mat-tab-group>
-            <mat-tab label="Thông tin sản phẩm">
-                <div class="tab-pane container pt-3">
-                    <div class="content_mota_chitiet overflow-hidden"
-                        [innerHtml]="product?.ThongTin | textTruncate:0:1500:!textShow | noSanitize">
-
-                    </div>
-                    <div class="w-100 text-center p-3"><span class="btn btn-show" (click)="textShow=!textShow">Xem thêm</span></div>
-                </div>
-            </mat-tab>
-            <mat-tab label="Đánh giá">
-                <app-danhgia [currentName]='product?.TenSanPham'></app-danhgia>
-            </mat-tab>
-        </mat-tab-group>
-    </mat-card>
 
 
     <br>

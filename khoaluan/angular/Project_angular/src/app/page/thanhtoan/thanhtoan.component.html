@@ -123,9 +123,9 @@
 
                 </mat-horizontal-stepper>
                 <div class="text-center my_sticky p-3 mat-elevation-z2">
-                    <button mat-stroked-button class="mr-2" (click)="onBack()" *ngIf="showback">Back</button>
-                    <button mat-raised-button color="primary" (click)="onNext()" *ngIf="shownext">Next</button>
-                    <button mat-raised-button color="warn" *ngIf="showdathang" class="position-relative "
+                    <button mat-stroked-button class="mr-2" (click)="onBack()" *ngIf="showback">Trở về</button>
+                    <button mat-raised-button color="primary" (click)="onNext()" *ngIf="shownext">Tiếp tục</button>
+                    <button mat-raised-button  *ngIf="showdathang" class="position-relative bg-user-primary"
                         [disabled]="firstFormGroup.invalid || secondFormGroup.invalid || is_loading"
                         (click)="onPutChild()">
                         <div class="d-flex justify-content-center position-relative">

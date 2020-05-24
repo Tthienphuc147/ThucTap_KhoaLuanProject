@@ -82,7 +82,7 @@ export class SanphambanchayComponent implements OnInit, OnDestroy {
         infinite: false,
         vertical: true,
         verticalSwiping: true,
-        slidesToShow: 5,
+        slidesToShow: 3,
         slidesToScroll: 1,
         swipe: true,
         touchMove: true,

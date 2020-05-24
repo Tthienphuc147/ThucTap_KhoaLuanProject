@@ -33,6 +33,8 @@ export class BlockDanhMucComponent implements OnInit, OnDestroy {
     isloaded = false;
     is_loading = true;
     loading = false;
+    danhmucData : any;
+    listCategories = ['Điện thoại','Tablet','Phụ kiện','Pin dự phòng'];
     constructor(
         private danhmucService: DanhmucService,
         private cartService: CartService,
@@ -56,6 +58,9 @@ export class BlockDanhMucComponent implements OnInit, OnDestroy {
     onClickDanhMuc(e) {
         this.router.navigate(['/search'], { queryParams: { cat: e.id } });
     }
+    searchCategory(item){
+        this.router.navigate(['/search'], { queryParams: { cat: item.idDanhMuc } });
+    }
     loadData() {
         this.subscriptions.push(
             this.loadingService.LoadingObs.subscribe(
@@ -64,6 +69,7 @@ export class BlockDanhMucComponent implements OnInit, OnDestroy {
             this.danhmucService.itemsObs.subscribe(
                 data => {
                     this.danhmucs = data;
+                    console.log(this.danhmucs);
                     this.getallsub_danhmuc(this.idblock.id);
                 },
                 err => {}
@@ -81,6 +87,15 @@ export class BlockDanhMucComponent implements OnInit, OnDestroy {
                             return this.mysubdanhmuc.includes(e.idDanhMuc);
                         })
                         .slice(0, 8);
+                        console.log( this.products);
+                    this.danhmucData = this.products.map(item => {
+                        const data = {
+                            TenDanhMuc : item.TenDanhMuc,
+                            idDanhMuc : item.idDanhMuc,
+                        }
+                        return data;
+                    }
+                       ).slice(0,1);
                     this.is_loading = false;
                 }
             })

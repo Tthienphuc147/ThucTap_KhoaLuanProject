@@ -92,7 +92,44 @@
 .noUi-draggable {
   cursor: w-resize;
 }
-
+.jtf-custom{
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+}
+.button-contact {
+    text-align: center;
+    background-color: #288ad6 !important;
+    width: 48%;
+    padding: 0.2rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.button-contact1 {
+    background-color: #06998F !important;
+}
+.tab-detail--product{
+    background: #f9f9f9;
+    padding: 1.2rem;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+}
+.category-name{
+    cursor: pointer;
+}
+.category-name:hover{
+    text-decoration: underline;
+}
+.primary-user-color{
+    color:#06998F;
+}
+.bg-user-primary{
+    background-color: #06998F;
+    color:#fff;
+}
 .noUi-handle {
   position: relative;
   z-index: 1;
@@ -434,13 +471,29 @@ ul.site-nav > li:hover .submenu {
 .card-title {
   font-size: 1.1rem;
 }
-
+.box-item{
+    transition: all 0.2s linear;
+}
 .box-item:hover {
   -webkit-box-shadow: 0px 0px 4px 0px #00000099;
   box-shadow: 0px 0px 4px 0px #00000099;
   z-index: 9;
 }
-
+.box-item:hover .box_img img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    -webki-transform: translate(0, -5px);
+    -moz-transform: translate(0, -5px);
+    transform: translate(0, -5px);
+  }
+  .box-item:hover .card_title {
+    color:#06998F !important;
+    text-decoration: underline;
+  }
+  .box_img{
+      padding-top: 1rem;
+  }
 .mini_menu span a:hover {
   color: red;
 }
@@ -470,12 +523,15 @@ ul.site-nav > li:hover .submenu {
 }
 
 .box-item {
-  border-right: 1px solid whitesmoke;
-  border-bottom: 1px solid whitesmoke;
+  border-right: 0.5px solid whitesmoke;
+  border-bottom: 0.5px solid whitesmoke;
   -webkit-border-radius: 0;
   border-radius: 0;
+  min-height: 20rem;
 }
-
+.price-label{
+    color:#06998F;
+}
 .box_flex {
   border-right: 1px solid rgba(0, 0, 0, 0.125);
 }
@@ -590,6 +646,7 @@ ul.site-nav > li:hover .submenu {
 .card-img-top {
   margin: 0px auto;
   border: none !important;
+
 }
 
 .slide_item .col-lg-3 {
