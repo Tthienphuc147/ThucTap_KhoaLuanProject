@@ -1891,3 +1891,10 @@ input:checked + .slider:before {
                     transform: rotate(360deg);
                 }
             }
+
+    .invalid-validator {
+                width: 100%;
+                margin-top: 0.25rem;
+                font-size: 80%;
+                color: #f86c6b;
+    }

@@ -105,4 +105,7 @@ Route::get('listdichvu','Api\DichVuController@getAllDichVu');
 // Route::get('loaitintuc/{id}','Api\LoaiTinTucController@getLoaiTinTuc');
 Route::get('loaidichvulienquan/{id}','Api\DichVuController@getAllDichVuTheoLoai');
 
+//api gui lien he
+Route::post('sendcontact','Api\HoTroController@sendContact');
+
 Route::middleware('jwt.refresh')->get('/token/refresh', 'AuthController@refresh');
