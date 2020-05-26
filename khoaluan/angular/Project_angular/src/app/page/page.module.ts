@@ -24,6 +24,7 @@ import { SearchModule } from './search/search.module';
 import { TintucComponent } from './tintuc/tintuc.component';
 import { LoaiTinTucComponent } from './loai-tin-tuc/loai-tin-tuc.component';
 import { ChiTietBaoVietComponent } from './chi-tiet-bao-viet/chi-tiet-bao-viet.component';
+import { GioiThieuModule } from './gioithieu/gioithieu.module';
 
 RecaptchaComponent.prototype.ngOnDestroy = function() {
     if (this.subscription) {
@@ -54,7 +55,8 @@ RecaptchaComponent.prototype.ngOnDestroy = function() {
         SearchModule,
         TinTucModule,
         DichVuModule,
-        LienHeModule
+        LienHeModule,
+        GioiThieuModule
     ],
     entryComponents: [
         DangkyComponent,

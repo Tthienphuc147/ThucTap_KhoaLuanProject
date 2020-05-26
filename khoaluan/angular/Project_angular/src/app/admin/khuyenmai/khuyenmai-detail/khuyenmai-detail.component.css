@@ -11,3 +11,7 @@
 .body_content input {
   max-width: 300px;
 }
+.img{
+    width: 7rem;
+    padding: 1rem;
+}

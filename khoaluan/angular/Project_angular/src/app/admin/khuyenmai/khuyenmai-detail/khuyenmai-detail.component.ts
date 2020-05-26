@@ -29,13 +29,15 @@ class MyNode {
     styleUrls: ['./khuyenmai-detail.component.css']
 })
 export class KhuyenmaiDetailComponent implements OnInit, OnDestroy {
-    private api_url = environment.api_img;
+    api_url = environment.api_storage;
     chitietkhuyenmais: any[] = [];
     myNodes: MyNode[] = [];
     expand = false;
+    file: File;
+    filename = '';
     columnsToDisplay = this.expand
-        ? ['id', 'TiLe', 'idSanPham', 'created_at', 'updated_at', 'action']
-        : ['id', 'TiLe', 'idSanPham', 'action'];
+        ? ['id', 'TiLe', 'idSanPham','anhMoTa', 'created_at', 'updated_at', 'action']
+        : ['id', 'TiLe', 'idSanPham','anhMoTa', 'action'];
     displayedColumnsSanPham = ['TenSanPham'];
     khuyenmais: KhuyenMai[] = [];
     subscriptions: Subscription[] = [];
@@ -152,6 +154,7 @@ export class KhuyenmaiDetailComponent implements OnInit, OnDestroy {
             Number.parseFloat(item.obj['TiLe']) > 0 &&
             Number.parseFloat(item.obj['TiLe']) < 1
         ) {
+            item.obj['anh_mo_ta']=this.file;
             const formData = new FormData();
             formData.append('_method', 'put');
             for (const key in item.obj) {
@@ -172,5 +175,12 @@ export class KhuyenmaiDetailComponent implements OnInit, OnDestroy {
     }
     trackByFn(index, item) {
         return index;
+    }
+    onFileChange(e) {
+        if (e.target.files.length > 0) {
+            this.file = e.target.files[0];
+            this.filename = this.file.name;
+            // this.frm.get('Hinh').setValue(this.file);
+        }
     }
 }

@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\ChiTietKhuyenMai;
 use DB;
 use Illuminate\Http\Response;
+use File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ChiTietKhuyenMaiController extends Controller
 {
@@ -85,7 +88,24 @@ class ChiTietKhuyenMaiController extends Controller
     {
         try {
             $item=ChiTietKhuyenMai::find($id);
-            $item->update($request->only('TiLe','idSanPham','idKhuyenMai'));
+            $Hinh;
+            $oldname=$item->anh_mo_ta;
+            if($request->hasFile('anh_mo_ta'))
+            {
+                $file=$request->file('anh_mo_ta');
+                $duoi=$file->getClientOriginalExtension();
+                if($duoi != 'jpg' && $duoi !='png' && $duoi != 'jpeg')
+                {
+                    return response()->json("loi dinh dang");
+                }
+                $disk = Storage::disk('gcs');
+                $path=$disk->put('khuyenmai', $file);
+                $disk->delete('khuyenmai/'.$oldname);
+                $name=Str::after($path, 'khuyenmai/');
+                if($path){
+                    $item->update($request->only('TiLe','idSanPham','idKhuyenMai')+['anh_mo_ta'=>$name]);
+                }
+            }
             $query = '
             SELECT chi_tiet_khuyen_mais.*, san_pham_ban_muas."TenSanPham"
             FROM chi_tiet_khuyen_mais

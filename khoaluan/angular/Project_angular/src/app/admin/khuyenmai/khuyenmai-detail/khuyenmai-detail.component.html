@@ -86,6 +86,25 @@
                         </mat-form-field>
                     </td>
                 </ng-container>
+                <ng-container matColumnDef="anhMoTa">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ảnh mô tả </th>
+                    <td mat-cell *matCellDef="let item">
+
+                        <img src="{{api_url}}/upload/khuyenmai/{{item.obj.anh_mo_ta}}  "  class="img"
+                        *ngIf="item.obj.anh_mo_ta" >
+                        <div class="d-flex justify-content-between align-items-center" *ngIf="!item.isShow">
+                            <div class="d-flex flex-row input-group" >
+                                <input type="text" class="form-control" name='avatar' [value]='filename' readonly>
+                                <input (change)="onFileChange($event)" type='file' [hidden]='true' class="form-control"
+                                    placeholder="Nhập tên nhà cung cấp " #file />
+                                <div class="input-group-append">
+                                    <button type="button" (click)="file.click()" class="btn btn-primary">Choose...</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                </ng-container>
 
                 <ng-container matColumnDef="created_at">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Created_at </th>

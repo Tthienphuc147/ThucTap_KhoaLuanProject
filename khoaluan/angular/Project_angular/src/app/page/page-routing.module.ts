@@ -8,6 +8,7 @@ import { CartGuard } from '../helper/cart.guard';
 import { GiohangComponent } from './giohang/giohang.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PageComponent } from './page.component';
+import { GioiThieuComponent } from './gioithieu/gioithieu.component';
 
 const routes: Routes = [
     {
@@ -83,6 +84,10 @@ const routes: Routes = [
             {
                 path: 'lienhe',
                 component: LienHeComponent
+            },
+            {
+                path: 'gioithieu',
+                component: GioiThieuComponent
             }
         ]
     }

@@ -51,6 +51,11 @@ export class ChitietkhuyenmaiService {
             () => this.isLoadingSub.next(false)
         );
     }
+
+    getChiTietKhuyenMai() :Observable<any> {
+        const url = `${this.API}`;
+        return this.http.get(url);
+    }
     createNew(values: FormData) {
         this.isLoadingSub.next(true);
         this.http.post<any>(this.API, values).subscribe(

@@ -14,6 +14,7 @@ import { ThongbaoService } from './services/thongbao.service';
 import { ShareModule } from './share/share.module';
 import { TokenInterceptor } from './auth/intercreptors/token.intercreptor';
 import { ImagePopupComponent } from './components/image-popup/image-popup.component';
+import { AdsPopupComponent } from './components/ads-popup/ads-popup.component';
 // import { RefreshTokenInterceptor } from './auth/intercreptors/refreshToken.intercreptor';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ImagePopupComponent } from './components/image-popup/image-popup.compon
         PageNotFoundComponent,
         ThongbaoComponent,
         ConfirmDialogComponent,
-        ImagePopupComponent
+        ImagePopupComponent,
+        AdsPopupComponent
     ],
     imports: [
         HttpClientModule,
@@ -30,7 +32,7 @@ import { ImagePopupComponent } from './components/image-popup/image-popup.compon
         ShareModule,
         BrowserAnimationsModule
     ],
-    entryComponents: [ThongbaoComponent, ConfirmDialogComponent,ImagePopupComponent],
+    entryComponents: [ThongbaoComponent, ConfirmDialogComponent,ImagePopupComponent,AdsPopupComponent],
 
     providers: [
         ThongbaoService,
