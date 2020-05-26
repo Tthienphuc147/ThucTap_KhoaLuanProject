@@ -1,3 +1,4 @@
+import { LienHeModule } from './lienhe/lienhe.module';
 import { DichVuModule } from './dichvu/dichvu.module';
 import { TinTucModule } from './tintuc/tintuc.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -52,7 +53,8 @@ RecaptchaComponent.prototype.ngOnDestroy = function() {
         RecaptchaModule,
         SearchModule,
         TinTucModule,
-        DichVuModule
+        DichVuModule,
+        LienHeModule
     ],
     entryComponents: [
         DangkyComponent,

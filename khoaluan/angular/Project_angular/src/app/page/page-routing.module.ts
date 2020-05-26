@@ -1,3 +1,4 @@
+import { LienHeComponent } from './lienhe/lienhe.component';
 import { DichVuComponent } from './dichvu/dichvu.component';
 import { TintucComponent } from './tintuc/tintuc.component';
 import { NgModule } from '@angular/core';
@@ -78,6 +79,10 @@ const routes: Routes = [
             {
                 path: 'dichvu',
                 component: DichVuComponent
+            },
+            {
+                path: 'lienhe',
+                component: LienHeComponent
             }
         ]
     }
