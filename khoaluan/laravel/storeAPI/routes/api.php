@@ -55,6 +55,7 @@ Route::resource('danhgia', 'Api\DanhGiaController');
 Route::resource('hoadonnhap', 'Api\HoaDonNhapController');
 Route::resource('trangthai', 'Api\TrangThaiController');
 Route::resource('chitiethoadonnhap', 'Api\ChiTietHoaDonNhapController');
+Route::get('chitiet_hoadonnhap/{id}', 'Api\ChiTietHoaDonNhapController@showDetail');
 Route::resource('chitiethoadonxuat', 'Api\ChiTietHoaDonXuatController');
 Route::resource('hoadonxuat', 'Api\HoaDonXuatController');
 Route::resource('diadiem', 'Api\DiaDiemController');

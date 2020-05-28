@@ -128,7 +128,7 @@ export class ChitietsanphamComponent implements OnInit, OnDestroy {
     }
     openImageModal(img: string){
         const dialogConfig = new MatDialogConfig();
-        dialogConfig.disableClose = true;
+        dialogConfig.disableClose = false;
         dialogConfig.autoFocus = true;
         dialogConfig.data = {
             image: img

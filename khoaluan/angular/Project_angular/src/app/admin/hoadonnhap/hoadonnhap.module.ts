@@ -6,10 +6,12 @@ import { HoadonnhapEditComponent } from './hoadonnhap-edit/hoadonnhap-edit.compo
 import { ShareModule } from '../../share/share.module';
 import { HoadonnhapDetailComponent } from './hoadonnhap-detail/hoadonnhap-detail.component';
 import { HoadonnhapComponent } from './hoadonnhap.component';
+import { HoadonnhapDetailListComponent } from './hoadonnhap-detail-list/hoadonnhap-detail-listcomponent';
 
 
 @NgModule({
-  declarations: [HoadonnhapListComponent, HoadonnhapCreateComponent, HoadonnhapEditComponent, HoadonnhapDetailComponent, HoadonnhapComponent],
+  // tslint:disable-next-line: max-line-length
+  declarations: [HoadonnhapListComponent, HoadonnhapCreateComponent, HoadonnhapEditComponent, HoadonnhapDetailComponent, HoadonnhapComponent, HoadonnhapDetailListComponent],
   imports: [
     ShareModule,
 
@@ -20,7 +22,8 @@ import { HoadonnhapComponent } from './hoadonnhap.component';
     HoadonnhapEditComponent
   ],
   exports: [
-    HoadonnhapListComponent, HoadonnhapCreateComponent, HoadonnhapEditComponent, HoadonnhapDetailComponent, HoadonnhapComponent
+    // tslint:disable-next-line: max-line-length
+    HoadonnhapListComponent, HoadonnhapCreateComponent, HoadonnhapEditComponent, HoadonnhapDetailComponent, HoadonnhapComponent, HoadonnhapDetailListComponent
   ]
 })
 export class HoadonnhapModule { }

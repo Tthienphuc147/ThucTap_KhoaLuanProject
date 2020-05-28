@@ -59,6 +59,9 @@ export class HoadonnhapListComponent implements OnInit, OnDestroy {
     onDetail(e) {
         this.router.navigate(['admin/hoadonnhap', e.id, 'detail']);
     }
+    onDetailList(e) {
+        this.router.navigate(['admin/hoadonnhap', e.id, 'detailList']);
+    }
     loadData() {
         this.subscriptions.push(
             this.hoadonnhapService.itemsObs.subscribe(data => {

@@ -34,9 +34,9 @@ export class ChitietHoaDonNhapService {
     findIndex(array, id: number) {
         return array.findIndex(e => e.id === id);
     }
-    referById(id: number) {
-        const url = `${this.API}/${id}`;
-        this.http.get<any>(url);
+    referById(id: number):Observable<any> {
+        const url = `${environment.api_url}/api/chitiet_hoadonnhap/${id}`;
+        return this.http.get<any>(url);
     }
     getAll() {
         this.isLoadingSub.next(true);

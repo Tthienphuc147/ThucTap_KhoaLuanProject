@@ -33,6 +33,7 @@ import { BaocaoListComponent } from './baocao/baocao-list/baocao-list.component'
 import { PhanquyenListComponent } from './phanquyen/phanquyen-list/phanquyen-list.component';
 import { AdminGuard } from '../helper/admin.guard';
 import { NgModule } from '@angular/core';
+import { HoadonnhapDetailListComponent } from './hoadonnhap/hoadonnhap-detail-list/hoadonnhap-detail-listcomponent';
 
 const routes: Routes = [
     {
@@ -114,7 +115,7 @@ const routes: Routes = [
                 children: [
                     { path: '', component: HoadonnhapListComponent },
                     { path: ':id/detail', component: HoadonnhapDetailComponent },
-
+                    { path: ':id/detailList', component: HoadonnhapDetailListComponent },
                 ]
             },
             {

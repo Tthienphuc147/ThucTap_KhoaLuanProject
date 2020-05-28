@@ -38,11 +38,19 @@ export class AdminComponent implements OnInit, OnDestroy {
         { name: 'Danh mục hình', link: 'danhmuchinh' },
         { name: 'Sản phẩm', link: 'sanpham' },
         { name: 'Khuyến mãi', link: 'khuyenmai' },
+        { name: 'Danh mục tin tức', link: 'danhmuctintuc' },
+        { name: 'Loại tin tức', link: 'loaitintuc' },
+        { name: 'Tin tức', link: 'tintuc' },
+        { name: 'Danh mục dịch vụ', link: 'danhmucdichvu' },
+        { name: 'Loại dịch vụ', link: 'loaidichvu' },
+        { name: 'Dịch vụ', link: 'dichvu' },
         { name: 'Quyền', link: 'quyen' },
         { name: 'Đánh giá', link: 'danhgia' },
         { name: 'Hóa đơn nhập', link: 'hoadonnhap' },
         { name: 'Hóa đơn xuất', link: 'hoadonxuat' },
-        { name: 'Địa điểm', link: 'diadiem' }
+        { name: 'Địa điểm', link: 'diadiem' },
+        { name: 'Đánh giá', link: 'danhgia' },
+
     ];
     _mobileQueryListener: () => void;
     constructor(

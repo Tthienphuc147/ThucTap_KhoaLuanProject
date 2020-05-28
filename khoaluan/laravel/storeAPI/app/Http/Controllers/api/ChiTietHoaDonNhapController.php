@@ -79,6 +79,24 @@ class ChiTietHoaDonNhapController extends Controller
         return response()->json($result,Response::HTTP_OK,[],JSON_NUMERIC_CHECK);
     }
     //
+    public function showDetail($id)
+    {
+        $query = '
+        SELECT chi_tiet_hoa_don_nhaps.*
+        ,   san_pham_ban_muas."TenSanPham"
+        FROM chi_tiet_hoa_don_nhaps
+        LEFT JOIN san_pham_ban_muas
+        ON san_pham_ban_muas."id" = chi_tiet_hoa_don_nhaps."idSanPham"
+        WHERE chi_tiet_hoa_don_nhaps."idHDN" = '.$id;
+        $data_find = DB::select($query);
+            //
+        $result = array(
+            'status' => 'OK',
+            'message'=> 'Refer Successfully',
+            'data'=> $data_find
+        );
+        return response()->json($result,Response::HTTP_OK,[],JSON_NUMERIC_CHECK);
+    }
     public function update(Request $request, $id)
     {
         try {

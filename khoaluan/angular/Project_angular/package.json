@@ -45,6 +45,7 @@
         "ngx-image-zoom": "^0.6.0",
         "ngx-skeleton-loader": "^2.0.0",
         "ngx-slick-carousel": "^0.4.6",
+        "pdfmake": "^0.1.65",
         "reflect-metadata": "^0.1.13",
         "rxjs": "~6.4.0",
         "slick-carousel": "^1.8.1",
