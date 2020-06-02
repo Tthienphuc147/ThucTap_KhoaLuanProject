@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, CurrencyPipe } from '@angular/common';
 import { HoadonnhapListComponent } from './hoadonnhap-list/hoadonnhap-list.component';
 import { HoadonnhapCreateComponent } from './hoadonnhap-create/hoadonnhap-create.component';
 import { HoadonnhapEditComponent } from './hoadonnhap-edit/hoadonnhap-edit.component';
@@ -16,7 +16,7 @@ import { HoadonnhapDetailListComponent } from './hoadonnhap-detail-list/hoadonnh
     ShareModule,
 
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,CurrencyPipe],
   entryComponents: [
     HoadonnhapCreateComponent,
     HoadonnhapEditComponent
