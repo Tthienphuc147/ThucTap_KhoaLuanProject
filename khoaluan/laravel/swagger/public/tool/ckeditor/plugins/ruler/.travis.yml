@@ -1,0 +1,39 @@
+language: javascript
+sudo: required
+before_install:
+    - nvm use 7.4.0
+    - node --version
+    - npm install -g npm
+    - npm --version
+install:
+    - wget http://download.cksource.com/CKBuilder/2.3.1/ckbuilder.jar
+script:
+    - NAME="ckeditor-ruler"
+    - zip -r $NAME ./ -x docs/\* -x .git/\* -x .gitignore -x .npmignore -x .travis.yml -x ckbuilder.jar
+    - TEST=$(java -jar ckbuilder.jar --no-ie-checks --verify-plugin $NAME.zip)
+before_deploy:
+    - TAG=$(git symbolic-ref -q --short HEAD || git describe --tags --exact-match 2>/dev/null)
+    - FILE="./$NAME.zip"
+    - if [[ -e $FILE ]]; then
+        NEW_NAME="$NAME-$TAG";
+        mv $NAME.zip $NEW_NAME.zip;
+      fi
+deploy:
+  - provider: releases
+    api_key:
+        secure: LX7UQ8AyO8CmRheaETKCaY30ntnydoYt24ymQe1NOUpnS++kj4FeJHH7gA3PlLfJ3Pvf2QcBkTyt8nmzSGkyYWxRrDM7FiwEmbeNS34DrJn1FKBTsoK3y1m++heiuVzAXEJNp+LbuXdt1onEwbK5PZJIQueVURAXT5JYtJ4XhC8Fnwt7xwQHQyTdvvDB9TJZ9yJj5Jlicdh+ZFIRVctQlXe0MijNyj3D8I21KTIXq/OlIm+3BZLPADDL0K7LxP6nO1XLtOjtmQvQv4dUK/guWsjXRdfhkF1zErbBnn+MqfDxOB18ZILvdMciDcOCN8Y0lK0ljk5c0VAgEdRziIMAe6OLwexFcraGaagHoIt/vxV5RZJ/djp6KAz0tw/ZsCN0L1/UJMdiFQoHG0GciQ7SA+Mwpjg99uwF4z5utyBKf5aBDy4mOOTdhwU7xnSf9KYFKb9j/zpmeTxzwywzRfQ1ozOxtzgr5HVPVdWbcE1LxebvLzldr922zn9XlpUlCPL6Jp99NsqWGfAQ+Hg4Rulq6nQow8Ueu7BpVJpTdy/tuIbEilU9xOzGlJ71dxyYXNLf0zc6mtUswO1encu99IGijwA8/a4cxS817HD48gkFuBHqu1Si8c6rJtTXwtsiGJ/NsL+UKtIvxVngyAYCxnd2LDQod/0K8L7kSK2D8vowOmg=
+    file: "$NEW_NAME.zip"
+    skip_cleanup: true
+    on:
+        tags: true
+        repo: lovata/ckeditor-ruler
+        condition: $TEST = OK
+  - provider: npm
+    email: account@lovata.com
+    api_key:
+        secure: nCxGFDGjRi7ljjAwoKa02CFJQb/jWePJlksTGUnAxtD/RuTNhJ+7KYKKlHiua0K41DnD0LkVpuFG9OOuItHBGGfrhBgHc5mTOHLsQ7sNiNgvn9YwvpYG9yzN9pCtJgTmwegOj3hX4a/fTRO7fNfwnkUcGgbtAssrZSqNK2xNOd8C/nZbVPyx0hEblJ7LcVl2VLOpBg4FIXiCntvD+lIeWFt6LE1c99zpJgMk1Snm9yHQL271iSJcI/qRcf8Ju5rZTQEghj4K672d7Wi2aRY9TxTtDqJu44tQ4Wb2z6pK2Ouuo5OSANFIyaDYG8y1syyUqDJpClrlNU2ZOnn9dghP/wKtj13uNT5XDmQzZx/pI17Jz7+IexpXasEKX2GO0vDGdxyl25ZO4gTa88Jon60+0jPWTrlHLhi9d5sIuuVr7UdageYxelKugdOKZbmAW7aslOHoyCt1h4C11V0zVnR5QZUoe3G3nOxlaMIrgoBYWcrZckyZJJCa1gX5ydM5v7gAEcNZ1fBLP+QZZ1DRzbszZob027b6XJ+JK1x4px5SRNjdI5I52YTPs3ms4tJfPOxUaCBH70kY6sd+SnsLa55RlvHHcseGtjffnxAqxcY2EytCyFL+GVU6tOE8+79jIgI2ro45wpoDuA5tWNxipk1hV7uiuHMa8M2lTP83/7ltPdg=
+    skip_cleanup: true
+    on:
+        tags: true
+        repo: lovata/ckeditor-ruler
+        condition: $TEST = OK
